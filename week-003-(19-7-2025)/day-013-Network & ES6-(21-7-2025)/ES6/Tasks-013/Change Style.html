@@ -1,0 +1,179 @@
+<html lang="en">
+
+<head>
+    <title>Change Style</title>
+    <style>
+        #change {
+            width: 800px;
+            min-height: 50px;
+            margin: 50px auto;
+            border: 1px solid black;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        label {
+            display: inline-block;
+        }
+
+        input {
+            display: inline-block;
+        }
+
+        table {
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="change">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
+        voluptas voluptates quod quam deserunt ipsam voluptate impedit magni
+        natus dignissimos hic nemo, incidunt vel aut exercitationem
+        voluptatibus qui officiis modi?
+    </div>
+    <table border="1">
+        <tr>
+            <td>
+                <p>Font-Family</p>
+                <input type="radio" name="fontFamily" value="Arial" property="fontFamily" />
+                <label>Arial</label>
+                <br />
+                <input type="radio" name="fontFamily" value="Times New Roman" property="fontFamily" />
+                <label>Times</label>
+                <br />
+                <input type="radio" name="fontFamily" value="Courier" property="fontFamily" />
+                <label>Courier</label>
+                <br />
+            </td>
+            <td>
+                <p>Text-Align</p>
+                <input type="radio" name="textAlign" value="center" property="textAlign" />
+                <label>Center</label>
+                <br />
+                <input type="radio" name="textAlign" value="left" property="textAlign" />
+                <label>Left</label>
+                <br />
+                <input type="radio" name="textAlign" value="right" property="textAlign" />
+                <label>Right</label>
+                <br />
+            </td>
+            <td>
+                <p>Line-Hight</p>
+                <input type="radio" name="lineHeight" value="1" property="lineHeight" />
+                <label>1</label>
+                <br />
+                <input type="radio" name="lineHeight" value="1.5" property="lineHeight" />
+                <label>1.5</label>
+                <br />
+                <input type="radio" name="lineHeight" value="2" property="lineHeight" />
+                <label>2</label>
+                <br />
+            </td>
+            <td>
+                <p>Letter-Spacing</p>
+                <input type="radio" name="letterSpacing" value="2px" property="letterSpacing" />
+                <label>2px</label>
+                <br />
+                <input type="radio" name="letterSpacing" value="5px" property="letterSpacing" />
+                <label>5px</label>
+                <br />
+                <input type="radio" name="letterSpacing" value="7px" property="letterSpacing" />
+                <label>7px</label>
+                <br />
+            </td>
+            <td>
+                <p>Text-Transform</p>
+                <input type="radio" name="textTransform" value="capitalize" property="textTransform" />
+                <label>capitalize</label>
+                <br />
+                <input type="radio" name="textTransform" value="uppercase" property="textTransform" />
+                <label>uppercase</label>
+                <br />
+                <input type="radio" name="textTransform" value="lowercase" property="textTransform" />
+                <label for="lowercase">lowercase</label>
+                <br />
+            </td>
+            <td>
+                <p>Text-Color</p>
+                <input type="radio" name="color" value="red" property="color" />
+                <label>red</label>
+                <br />
+                <input type="radio" name="color" value="green" property="color" />
+                <label>green</label>
+                <br />
+                <input type="radio" name="color" value="blue" property="color" />
+                <label for="lowercase">blue</label>
+                <br />
+            </td>
+            <td>
+                <p>Border-Width</p>
+                <input type="radio" name="borderWidth" value="2px" property="borderWidth" />
+                <label>2px</label>
+                <br />
+                <input type="radio" name="borderWidth" value="5px" property="borderWidth" />
+                <label>5px</label>
+                <br />
+                <input type="radio" name="borderWidth" value="7px" property="borderWidth" />
+                <label>7px</label>
+                <br />
+            </td>
+            <td>
+                <p>Border-type</p>
+                <input type="radio" name="borderType" value="solid" property="borderStyle" />
+                <label>solid</label>
+                <br />
+                <input type="radio" name="borderType" value="dotted" property="borderStyle" />
+                <label>dotted</label>
+                <br />
+                <input type="radio" name="borderType" value="dashed" property="borderStyle" />
+                <label>dashed</label>
+                <br />
+            </td>
+            <td>
+                <p>Border-color</p>
+                <input type="radio" name="borderColor" value="red" property="borderColor" />
+                <label>red</label>
+                <br />
+                <input type="radio" name="borderColor" value="green" property="borderColor" />
+                <label>green</label>
+                <br />
+                <input type="radio" name="borderColor" value="blue" property="borderColor" />
+                <label>blue</label>
+                <br />
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        const inp = document.getElementsByTagName("input");
+        console.log(inp);
+
+
+        let newArrray = Array.from(inp);
+        console.log(newArrray);
+
+
+        newArrray = document.querySelectorAll("input[type='radio']")
+        console.log(newArrray);
+    </script>
+
+    <script>
+        let inputs = document.querySelectorAll("input[type='radio']");
+
+        function changePropertiesFunction(elements) {
+            elements.forEach((ele) => {
+                ele.addEventListener("click", function () {
+                    document.getElementById("change").style[
+                        this.getAttribute("property")
+                    ] = this.value;
+                });
+            });
+        }
+
+        changePropertiesFunction(inputs);
+    </script>
+</body>
+
+</html>

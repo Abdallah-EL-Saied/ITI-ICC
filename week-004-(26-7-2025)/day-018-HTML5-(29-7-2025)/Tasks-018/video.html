@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Player</title>
+    <link rel="stylesheet" href="css/video.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="video-page">
+    <h1>HTML5 Day 3 Tasks</h1>
+    <div class="tabs">
+        <a href="index.html" class="tab-button">Home</a>
+        <a href="calculator.html" class="tab-button">➕ Calculator</a>
+        <a href="video.html" class="tab-button">🎬 Video Player</a>
+        <a href="canvas.html" class="tab-button">✍️ Canvas Pen</a>
+        <a href="drag_drop.html" class="tab-button">📦 Drag & Drop</a>
+        <a href="map.html" class="tab-button">📍 Location Map</a>
+    </div>
+    <div id="project-content">
+        <div class="video-player-container">
+            <div class="video-list">
+                <div class="effect-controls">
+                    <button id="enable-original-effect">Enable Original Effect</button>
+                    <button id="disable-original-effect">Disable Original Effect</button>
+                </div>
+                <button class="video-button"
+                    data-video-src="up/Rabi3 Kortoba EP 15 _ ربيع قرطبة الحلقة 15(720P_HD)(480P).mp4">Video 1</button>
+                <button class="video-button"
+                    data-video-src="up/video_2025-08-02_12-37-11.mp4">Video 2</button>
+                <button class="video-button" data-video-src="video.mp4" data-start-time="0">Video 3</button>
+                <button class="video-button" data-video-src="video.mp4" data-start-time="0">Video 4</button>
+                <button class="video-button" data-video-src="video.mp4" data-start-time="0">Video 5</button>
+                <button class="video-button" data-video-src="video.mp4" data-start-time="0">Video 6</button>
+                <button class="video-button" data-video-src="video.mp4" data-start-time="0">Video 7</button>
+                <button class="video-button" data-video-src="video.mp4" data-start-time="0">Video 8</button>
+                <button class="video-button" data-video-src="video.mp4" data-start-time="0">Video 9</button>
+                <button class="video-button" data-video-src="video.mp4" data-start-time="0">Video 10</button>
+            </div>
+
+            <div class="video-player">
+
+                <div class="video-container">
+                    <video id="main-video" controls width="100%" height="100%">
+                        <source src="video.mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="effect-controls">
+                    <button id="rewind-10">⏪ -10s</button>
+                    <button id="forward-10">⏩ +10s</button>
+                </div>
+
+                <div id="video-title">Now Playing: Video 15</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/video.js"></script>
+</body>
+
+</html>

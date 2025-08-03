@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Animation Control</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4 font-sans">
+    <div class="main-container">
+        <h1 class="main-heading">Box Animation Controller</h1>
+        <div class="sub-container">
+            <div id="animatedBox">
+                <div class="box-inner"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button id="startButton" class="control-button start-button">Start</button>
+        <button id="pauseButton" class="control-button pause-button">Pause</button>
+        <button id="stopButton" class="control-button stop-button">Stop</button>
+    </div>
+
+    <script>
+        const animatedBox = document.getElementById('animatedBox');
+        const startButton = document.getElementById('startButton');
+        const pauseButton = document.getElementById('pauseButton');
+        const stopButton = document.getElementById('stopButton');
+
+        function startAnimation() {
+            if (!animatedBox.classList.contains('animate-box')) {
+                animatedBox.classList.add('animate-box');
+            }
+            animatedBox.style.animationPlayState = 'running';
+        }
+
+        function togglePauseResume() {
+            const currentState = window.getComputedStyle(animatedBox).animationPlayState;
+            animatedBox.style.animationPlayState = currentState === 'paused' ? 'running' : 'paused';
+        }
+
+        function stopAnimation() {
+            animatedBox.classList.remove('animate-box');
+            animatedBox.style.transform = 'translateX(0)';
+            animatedBox.querySelector('.box-inner').style.backgroundColor = '#ef4444';
+            animatedBox.style.animationPlayState = '';
+        }
+
+        startButton.addEventListener('click', startAnimation);
+        pauseButton.addEventListener('click', togglePauseResume);
+        stopButton.addEventListener('click', stopAnimation);
+    </script>
+</body>
+
+</html>

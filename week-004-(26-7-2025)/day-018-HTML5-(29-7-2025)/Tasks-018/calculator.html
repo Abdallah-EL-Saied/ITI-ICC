@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="css/calculator.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="calculator-page">
+    <h1>HTML5 Day 3 Tasks</h1>
+    <div class="tabs">
+        <a href="index.html" class="tab-button">Home</a>
+        <a href="calculator.html" class="tab-button">➕ Calculator</a>
+        <a href="video.html" class="tab-button">🎬 Video Player</a>
+        <a href="canvas.html" class="tab-button">✍️ Canvas Pen</a>
+        <a href="drag_drop.html" class="tab-button">📦 Drag & Drop</a>
+        <a href="map.html" class="tab-button">📍 Location Map</a>
+    </div>
+    <div id="project-content">
+        <div class="calculator-container">
+            <div class="calc-section" id="add">
+                <h3>ADDITION</h3>
+                <div>
+                    <input type="number" value="0" id="num1" />
+                    <span>+</span>
+                    <input type="number" value="0" id="num2" />
+                    <span>=</span>
+                </div>
+                <span class="result" id="myvaladd">0</span>
+            </div>
+            <div class="calc-section" id="multiplication">
+                <h3>MULTIPLICATION</h3>
+                <div>
+                    <input type="number" value="0" id="num3" min="1" />
+                    <span>×</span>
+                    <input type="number" value="0" id="num4" min="1" />
+                    <span>=</span>
+                </div>
+                <span class="result" id="myvaluemultiplication">0</span>
+            </div>
+        </div>
+    </div>
+    <script src="js/calculator.js"></script>
+</body>
+
+
+</html>

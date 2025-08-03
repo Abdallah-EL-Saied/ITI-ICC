@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Updated ITI Locations</title>
+    <script src="https://kit.fontawesome.com/f75e6b28b2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="https://iti.gov.eg/assets/images/ColoredLogo.svg" alt="ITI Logo">
+        <h1>ITI Locations</h1>
+        <p>ITI Locations All Over The Country</p>
+    </header>
+
+    <main>
+        <div class="main-content-wrapper">
+            <div class="map-wrapper">
+                <img src="iti-map.png" alt="ITI Map" onerror="this.src='https://placehold.co/400x300?text=ITI+Map';" />
+            </div>
+
+            <div class="controls-wrapper">
+                <div class="nav-arrows">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+
+                <section id="branches-container">
+                    <div class="branches"><i class="fa-solid fa-location-dot"></i><span>ITI - Smart Village</span></div>
+                    <div class="branches"><i class="fa-solid fa-location-dot"></i><span>ITI - Assuit</span></div>
+                    <div class="branches"><i class="fa-solid fa-location-dot"></i><span>ITI - Ismailia</span></div>
+                    <div class="branches"><i class="fa-solid fa-location-dot"></i><span>ITI - Menofia</span></div>
+                    <div class="branches"><i class="fa-solid fa-location-dot"></i><span>ITI - Alexandria</span></div>
+                    <div class="branches"><i class="fa-solid fa-location-dot"></i><span>ITI - Tanta</span></div>
+                    <div class="branches"><i class="fa-solid fa-location-dot"></i><span>ITI - Aswan</span></div>
+                    <div class="branches"><i class="fa-solid fa-location-dot"></i><span>ITI - Mansoura</span></div>
+                </section>
+
+                <div class="branch-buttons">
+                    <article onclick="highlightMain()">
+                        <div class="main-branch"></div>
+                        <span>Main Branch</span>
+                    </article>
+                    <article onclick="highlightAll()">
+                        <div class="branch"></div>
+                        <span>Branch</span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <section class="contact-info">
+                <h2>Contact Us</h2>
+                <article><i class="fa-solid fa-location-crosshairs"></i><span>28 Km Cairo-Alex Desert Rd, 6 October,
+                        Egypt</span></article>
+                <article><i class="fa-solid fa-phone"></i><a href="tel:17002">17002</a></article>
+                <article><i class="fa-solid fa-envelope"></i><a href="mailto:ITIinfo@iti.gov.eg">ITIinfo@iti.gov.eg</a>
+                </article>
+            </section>
+            <section>
+                <h2>Follow Us</h2>
+                <article class="social-icons">
+                    <a href="https://www.facebook.com/ITI.eg"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/itieg"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/user/ITIchannel"><i class="fa-brands fa-youtube"></i></a>
+                </article>
+            </section>
+        </div>
+    </footer>
+
+    <script>
+        function highlightMain() {
+            const branches = document.querySelectorAll('.branches');
+            branches.forEach(branch => {
+                branch.classList.remove('highlight');
+                if (branch.textContent.includes('Smart Village')) {
+                    branch.classList.add('highlight');
+                }
+            });
+        }
+
+        function highlightAll() {
+            const branches = document.querySelectorAll('.branches');
+            branches.forEach(branch => {
+                branch.classList.add('highlight');
+            });
+        }
+    </script>
+</body>
+
+</html>

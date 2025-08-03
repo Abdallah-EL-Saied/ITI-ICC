@@ -1,0 +1,156 @@
+:root {
+    /* الخلفيات */
+    --background-body: #fafafa;
+    --background-container: #ffffff;
+    --background-left-box: #e1f5fe;
+
+    /* mark */
+    --background-mark-hover: #8bc34a;
+    --background-mark-active: #009688;
+    --text-mark-hover: #ffffff;
+    --text-mark-active: #ffffff;
+
+    /* الحدود */
+    --border-main: #f44336;
+    --border-left: #f44336;
+    --border-right: #cddc39;
+    --border-image: #f44336;
+
+    /* النص */
+    --text-default: #212121;
+
+    /* box-shadow ألوان قوية */
+    --box-shadow-outer: #e91e63;
+    --box-shadow-inner: #00bcd4;
+    --box-shadow-hover: #cddc39;
+    --box-shadow-active-outer: #2196f3;
+    --box-shadow-active-inner: #4caf50;
+    --box-shadow-box: #9c27b0;
+    --box-shadow-image: #ff5722;
+    --box-shadow-image-hover: #ffeb3b;
+
+    /* إضافي */
+    --column-rule: #ff9800;
+}
+
+/*==========================================================================*/
+/*==========================================================================*/
+
+body {
+    background-color: var(--background-body);
+    font-family: Arial, sans-serif;
+}
+
+#container {
+    width: 60%;
+    height: 520px;
+    margin: 45px auto;
+    display: flex;
+    border: 2px solid var(--border-main);
+    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 6px 6px 20px 4px var(--box-shadow-outer),
+        inset 1px 1px 80px var(--box-shadow-inner);
+    background-color: var(--background-container);
+    text-align: center;
+    overflow: hidden;
+    transition: all 3s;
+}
+
+#container:hover {
+    transform: skew(8deg, 4deg);
+    box-shadow: 6px 6px 20px 4px var(--border-main),
+        inset 1px 1px 80px var(--box-shadow-hover);
+}
+
+#container:active {
+    transform: scale(0.6, 0.7);
+    box-shadow: 6px 6px 20px 4px var(--box-shadow-active-outer),
+        inset 1px 1px 80px var(--box-shadow-active-inner);
+}
+
+.box {
+    transition: all 5s;
+    margin: 4px;
+    padding: 4px;
+    border: 3px solid;
+    border-radius: 8px;
+    box-shadow: inset 1px 1px 80px var(--box-shadow-box);
+}
+
+.left {
+    width: 35%;
+    column-rule: 2px dashed var(--column-rule);
+    column-count: 3;
+    text-align: center;
+    font-size: 13px;
+    overflow-y: scroll;
+    box-shadow: inset 1px 1px 80px var(--background-left-box);
+    min-height: auto;
+    border-color: var(--border-left);
+}
+
+.right {
+    width: 60%;
+    padding-left: 8px;
+    overflow-y: scroll;
+    border-color: var(--border-right);
+}
+
+img {
+    display: inline-block;
+    width: calc((100% - 150px) / 4);
+    margin: 8px;
+    border: 2px solid var(--border-image);
+    box-shadow: 2px 2px 6px var(--box-shadow-image);
+    transition: all 2s;
+}
+
+img:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 2px 6px var(--box-shadow-image-hover);
+}
+
+img:active {
+    transform: scale(2);
+    box-shadow: 2px 2px 6px var(--box-shadow-image-hover);
+}
+
+.left mark:hover {
+    color: var(--text-mark-hover);
+    background-color: var(--background-mark-hover);
+}
+
+.left mark:active {
+    color: var(--text-mark-active);
+    background-color: var(--background-mark-active);
+}
+
+/*==========================================================================*/
+/*==========================================================================*/
+
+@media screen and (orientation: portrait) {
+    #container:hover,
+    #container:active,
+    mark:hover,
+    mark:active{
+        transform: none;
+    }
+    .right {
+        width: 40%;
+        padding-top:  50px;
+    }
+    img {
+        display: block;
+        width: calc(95% - 40px);
+        margin: 12px auto;
+        transform: rotate(45deg);
+        box-shadow: 2px 2px 6px var(--box-shadow-image);
+    }
+    
+    .left {
+        width: 45%;
+        column-count: 1;
+        column-rule: none;
+    }
+}

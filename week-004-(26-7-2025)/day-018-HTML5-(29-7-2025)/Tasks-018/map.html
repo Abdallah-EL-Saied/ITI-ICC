@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geolocation Map</title>
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB90FxtYG_ybAYXGkz0ybkmkboE2nEbezI"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body class="map-page">
+    <h1>HTML5 Day 3 Tasks</h1>
+    <div class="tabs">
+        <a href="index.html" class="tab-button">Home</a>
+        <a href="index.html" class="tab-button">Home</a>
+        <a href="calculator.html" class="tab-button">➕ Calculator</a>
+        <a href="video.html" class="tab-button">🎬 Video Player</a>
+        <a href="canvas.html" class="tab-button">✍️ Canvas Pen</a>
+        <a href="drag_drop.html" class="tab-button">📦 Drag & Drop</a>
+        <a href="map.html" class="tab-button">📍 Location Map</a>
+    </div>
+    <div id="project-content">
+        <div class="container">
+            <h1>📍 Geolocation Viewer</h1>
+            <div class="button-group">
+                <button id="toggleMap">Show Map</button>
+                <button id="toggleDetails">Show Details</button>
+            </div>
+
+            <div class="content">
+                <div id="map" class="box hidden"></div>
+                <div id="details" class="box hidden"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/map.js"></script>
+</body>
+
+</html>

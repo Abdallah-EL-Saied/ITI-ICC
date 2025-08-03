@@ -1,0 +1,194 @@
+<html lang="en">
+
+<head>
+    <title>To do Organizer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #container {
+            width: 800px;
+            margin: 50px auto;
+            text-align: center;
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #ff5722;
+        }
+
+        #addBox input[type="text"] {
+            width: 500px;
+            padding: 10px 15px;
+            border: 0;
+            outline: 0;
+            border-radius: 10px;
+            margin: auto 15px;
+        }
+
+        #addBox input[type="button"] {
+            width: 80px;
+            padding: 10px 15px;
+            border: 0;
+            outline: 0;
+            border-radius: 10px;
+            background-color: #607d8b;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #eee;
+        }
+
+        th,
+        td {
+            padding: 5px 10px;
+        }
+
+        th {
+            background-color: #ff5722;
+            color: white;
+        }
+
+        td {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>To Do Organizer</h1>
+        <div id="addBox">
+            <input type="text" name="toDoInput" id="toDoInput" placeholder="Enter Task Name" autofocus />
+            <input type="button" name="addButton" id="addButton" value="Add" onclick="addTask()" />
+        </div>
+        <table>
+            <tr>
+                <th>Done</th>
+                <th>Task</th>
+                <th>Delete</th>
+            </tr>
+        </table>
+
+        <script>function searchTask(value, array) {
+                var smallValue = value.toLowerCase();
+                var smallArray = array.map((element) => {
+                    return element.toLowerCase();
+                });
+
+                if (smallArray.indexOf(smallValue) === -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            // Add New Row
+            var tasksArray = [];
+            var doneTasks = [];
+            //=============================================
+            function addTask() {
+                var newRow = document.createElement("tr");
+
+                var toDoInput = document.querySelector("#toDoInput");
+                if (toDoInput.value.trim() === "") {
+                    alert("Empty Field. Please Enter Your Task First");
+                    return;
+                }
+
+                // Tasks
+                var textCell = document.createElement("td");
+                textCell.textContent = toDoInput.value;
+
+                if (searchTask(toDoInput.value, tasksArray) === true && searchTask(toDoInput.value, doneTasks) === true) {
+                    tasksArray.push(toDoInput.value);
+                    console.log(tasksArray);
+
+                    // Task Checker
+                    var taskDone = document.createElement("td");
+                    var checkBox = document.createElement("input");
+                    checkBox.type = "checkbox";
+                    checkBox.name = "myCheck";
+                    checkBox.onclick = function () {
+                        textCell.style.textDecoration = checkBox.checked ? "line-through" : "none";
+                        if (checkBox.checked) {
+                            tasksArray.splice(tasksArray.indexOf(textCell.textContent) - 1, 1);
+                            doneTasks.push(textCell.textContent);
+                        } else {
+                            if (!tasksArray.includes(textCell.textContent)) {
+                                tasksArray.push(textCell.textContent);
+                            }
+                            doneTasks = doneTasks.filter((task) => task.toLowerCase() !== textCell.textContent.toLowerCase());
+                        }
+                    };
+                    taskDone.appendChild(checkBox);
+
+                    // Delete Button
+                    var deleteRow = document.createElement("td");
+                    var deleteBtn = document.createElement("input");
+                    deleteBtn.type = "button";
+                    deleteBtn.value = "Delete";
+                    deleteBtn.style.backgroundColor = "#f44336";
+                    deleteBtn.style.color = "white";
+                    deleteBtn.style.border = "none";
+                    deleteBtn.style.padding = "5px 10px";
+                    deleteBtn.style.borderRadius = "5px";
+                    deleteBtn.style.cursor = "pointer";
+                    deleteBtn.onclick = function () {
+                        var row = this.parentElement.parentElement;
+                        var taskText = row.children[1].textContent;
+                        var removeConfirm = confirm("This Task Will be Remove, Are You Sure?" + taskText);
+                        if (removeConfirm) {
+                            tasksArray = tasksArray.filter((task) => task.toLowerCase() !== taskText.toLowerCase());
+                            console.log(tasksArray);
+                            newRow.remove();
+                        } // handel error
+                    };
+                    deleteRow.appendChild(deleteBtn);
+
+                    newRow.appendChild(taskDone);
+                    newRow.appendChild(textCell);
+                    newRow.appendChild(deleteRow);
+
+                    document.querySelector("table").appendChild(newRow);
+
+                    // Clear Input
+                    toDoInput.value = "";
+                } else if (doneTasks.includes(toDoInput.value)) {
+                    let rows = document.querySelectorAll("table tr");
+
+                    rows.forEach(function (row, index) {
+                        if (index === 0) return;
+
+                        let taskText = row.children[1].textContent.trim().toLowerCase();
+                        if (taskText === toDoInput.value.trim().toLowerCase()) {
+                            row.children[0].children[0].checked = false; // checkbox
+                            row.children[1].style.textDecoration = "none"; // text
+                        }
+                    });
+
+                    doneTasks = doneTasks.filter((task) => task.toLowerCase() !== toDoInput.value.trim().toLowerCase());
+                    tasksArray.push(toDoInput.value.trim());
+
+                    toDoInput.value = "";
+                } else {
+                    alert("This Task Has Already Added");
+                    // Clear Input
+                    toDoInput.value = "";
+                }
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>

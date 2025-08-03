@@ -1,0 +1,386 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+<head>
+    <title>Registeration Form</title>
+
+    <style type="text/css">
+        /*Variables*/
+        :root {
+            --color-white: #f3f3f3;
+            --color-darkblue: #1b1b32;
+            --color-darkblue-alpha: rgba(27, 27, 50, 80%);
+            --color-green: #37af65;
+        }
+
+        /*Global Style Properties*/
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: arial, sans-serif;
+            line-height: 1.4;
+            color: var(--color-white, white);
+            margin: 0;
+        }
+
+        /* body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                background-color: var(--color-darkblue);
+                background-image: linear-gradient(
+                        115deg,
+                        rgba(58, 58, 158, 0.8),
+                        rgba(136, 136, 206, 0.7)
+                    ),
+                    url(https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            } */
+        label {
+            display: block;
+            font-size: 20px;
+        }
+
+        #title,
+        label {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 15px;
+            border-radius: 3px;
+            border: 0;
+            outline: 0;
+            font-size: 20px;
+            color: #777;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 40%;
+            display: inline-block;
+            color: inherit;
+            background-color: var(--color-green);
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            display: inline-block;
+            width: calc(50% / 8);
+            min-height: 20px;
+        }
+
+        input[type="checkbox"]+p {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        /*Specialy Style Properties*/
+        .container {
+            width: 540px;
+            margin: 50px auto 0 auto;
+        }
+
+        /* @media (min-width: 576px) {
+                .container {
+                    max-width: 540px;
+                }
+            }
+            @media (min-width: 768px) {
+                .container {
+                    max-width: 720px;
+                }
+            } */
+        .form-group:last-child {
+            text-align: center;
+        }
+
+        #header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        #title {
+            font-weight: 400;
+            line-height: 1.2;
+            color: #000;
+        }
+
+        #description {
+            font-weight: 200;
+            font-style: italic;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+        }
+
+        #survey-form {
+            padding: 30px;
+            background-color: var(--color-darkblue-alpha);
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .error-text {
+            margin-top: 5px;
+            font-size: 16px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="header">
+            <h1 id="title">Registration Form</h1>
+        </div>
+        <form id="survey-form">
+            <div class="form-group">
+                <label id="name-label">Name</label>
+                <input id="name" type="text" name="Name" placeholder="Enter Your Full Name" required />
+            </div>
+            <div class="form-group">
+                <label id="country-label">Country</label>
+                <select name="country" id="country">
+                    <option value="">-- Select Country --</option>
+                    <option value="11511">Egypt</option>
+                    <option value="12271">Saudi Arabia</option>
+                    <option value="00000">United Arab Emirates</option>
+                    <option value="11118">Jordan</option>
+                    <option value="00963">Syria</option>
+                    <option value="10001">Iraq</option>
+                    <option value="10000">Morocco</option>
+                    <option value="16000">Algeria</option>
+                    <option value="11111">Sudan</option>
+                    <option value="1107">Lebanon</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label id="number-label">Zip Code</label>
+                <input id="zip" type="number" name="zip" placeholder="Zip" readonly />
+            </div>
+            <div class="form-group">
+                <label id="email-label">Email</label>
+                <input id="email" type="email" name="Email" placeholder="Enter Your Email" required />
+            </div>
+            <div class="form-group">
+                <label id="hoppies-label">Hoppies</label>
+                <input type="checkbox" name="hoppies" value="Writing" />
+                <p>Writing</p>
+                <input type="checkbox" name="hoppies" value="Reading" />
+                <p>Reading</p>
+                <input type="checkbox" name="hoppies" value="Swimming" />
+                <p>Swimming</p>
+                <input type="checkbox" name="hoppies" value="Sleeping" />
+                <p>Sleeping</p>
+            </div>
+            <div class="form-group">
+                <input id="submit" type="submit" value="Submit" />
+                <input id="clear" type="reset" value="Clear Form" />
+            </div>
+        </form>
+    </div>
+    <script>
+        //====================== Shared & Variables Functions =================================
+
+        let selectForm = document.getElementsByTagName("form")[0];
+
+        function showError(ele, message, inpToFocus) {
+            let errorText = ele.querySelector(".error-text");
+
+            if (!ele.contains(errorText)) {
+                errorText = document.createElement("p");
+                errorText.classList.add("error-text");
+                ele.appendChild(errorText);
+            }
+
+            errorText.innerText = message;
+
+            setTimeout(() => inpToFocus.focus(), 0);
+        }
+
+        function removeError(ele) {
+            const errorText = ele.querySelector(".error-text");
+            if (ele.contains(errorText)) {
+                ele.removeChild(errorText);
+            }
+        }
+
+        //====================== Name Validation =================================
+
+        let inputName = document.getElementById("name");
+        let inputParent = inputName.parentElement;
+        const nameRegex =
+            /^([a-zA-Z\u0621-\u064A]+)(\s+[a-zA-Z\u0621-\u064A]+){1,3}$/;
+
+        function checkNameValid() {
+            const nameValue = inputName.value.trim();
+
+            if (nameValue === "") {
+                showError(
+                    inputParent,
+                    "This Field is Required, You Can't Leave it Empty",
+                    inputName
+                );
+                return false;
+            }
+
+            if (!nameRegex.test(nameValue)) {
+                showError(
+                    inputParent,
+                    "Please Enter Valid Name (2 to 4 words without numbers or special characters)",
+                    inputName
+                );
+                return false;
+            }
+
+            removeError(inputParent);
+            console.log("Validation Passed");
+            return true;
+        }
+
+        // Blur event
+        inputName.addEventListener("blur", checkNameValid);
+
+        // Input event (remove error while typing)
+        inputName.addEventListener("input", () => {
+            removeError(inputParent);
+        });
+
+        //====================== Country & Zip Code Validation =================================
+
+        function autoAddZipCode() {
+            let selectCountry = document.getElementById("country");
+            let selectZipInput = document.getElementById("zip");
+
+            selectCountry.addEventListener("change", function () {
+                let zipValue = this.value;
+                selectZipInput.value = zipValue;
+                if (zipValue === "") {
+                    console.log("Error");
+                }
+            });
+        }
+        autoAddZipCode();
+
+        //====================== Email Validation =================================
+
+        let emailInput = document.getElementById("email");
+        let emailParent = emailInput.parentElement;
+        const emailRegex =
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        function checkEmailValid() {
+            const emailValue = emailInput.value.trim();
+
+            if (emailValue === "") {
+                showError(
+                    emailParent,
+                    "This Field is Required, You Can't Leave it Empty",
+                    emailInput
+                );
+                return false;
+            }
+
+            if (!emailRegex.test(emailValue)) {
+                showError(
+                    emailParent,
+                    "Please Enter Valid E-mail",
+                    emailInput
+                );
+                return false;
+            }
+
+            removeError(emailParent);
+            console.log("Validation Passed");
+            return true;
+        }
+
+        // Blur event
+        emailInput.addEventListener("blur", checkEmailValid);
+
+        // Input event (remove error while typing)
+        emailInput.addEventListener("input", () => {
+            removeError(emailParent);
+        });
+
+        //====================== Submit Validation =================================
+
+        let selectedValues;
+        function checkHoppies() {
+            let selectCheckbox = document.querySelectorAll(
+                "input[type='checkbox']"
+            );
+            let selectChecked = document.querySelectorAll(
+                "input[type='checkbox']:checked"
+            );
+            let parent =
+                document.getElementById("hoppies-label").parentElement;
+
+            if (selectChecked.length === 0) {
+                showError(
+                    parent,
+                    "Please check at least one hobby",
+                    selectCheckbox[0]
+                );
+                return false;
+            } else {
+                removeError(parent);
+                selectedValues = Array.from(selectChecked).map(
+                    (cb) => cb.value
+                );
+                console.log("Selected hobbies:", selectedValues);
+                return selectedValues;
+            }
+        }
+
+        //====================== Submit Validation =================================
+
+        function submitValidation() {
+            selectForm.addEventListener("submit", function (e) {
+                if (
+                    !checkNameValid() ||
+                    !checkEmailValid() ||
+                    !checkHoppies()
+                ) {
+                    e.preventDefault();
+                } else {
+                    alert(
+                        "Congratulations! You Are Registered Now\nYour Name Is: " +
+                        inputName.value.trim() +
+                        "\nYour Email Is: " +
+                        emailInput.value.trim() +
+                        "\n" +
+                        "Selected Hobbies: " +
+                        selectedValues.join(", ")
+                    );
+                }
+            }); //end of submit
+        }
+        submitValidation();
+
+        //====================== Reset Validation =================================
+
+        selectForm.addEventListener("reset", function (e) {
+            if (!confirm("are you Sure ?")) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ES6</title>
+</head>
+
+<body>
+    <script>
+        /**
+        ** =========================== Arrays ===========================
+        */
+
+        let Arr = [100, 85, 70, 55, 40, 25, 10, 15, 30, 45, 60, 75, 90];
+
+        // Ascending Sort
+        Arr.sort((n1, n2) => n1 - n2);
+        console.log(Arr);
+
+        // Descending Sort
+        Arr.sort((n1, n2) => n2 - n1);
+        console.log(Arr);
+
+        // Filter Numbers Larger Than 50
+        let NewArr = Arr.filter((num) => num > 50);
+        console.log(NewArr);
+
+        // Find The Biggest Number
+        let Biggest = Math.max(...Arr);
+        console.log(Biggest);
+
+        // Find The Smallest Number
+        let Smallest = Math.min(...Arr);
+        console.log(Smallest);
+
+        /**
+        ** =========================== Functions ===========================
+        */
+
+        function Calc(operator = "+", ...Nums) {
+            return `result of (${operator}) operation for ${Nums.join(operator)} is ${eval(Nums.join(operator))}`;
+        }
+
+        console.log(Calc("+", 13, 14, 15, 16, 17, 18, 19, 20));
+
+        /**
+         ** =========================== Objects ===========================
+         */
+
+
+        // ========== Dynamic Object ==========
+
+
+        const nameRegex = /^[A-Z]+(_[A-Z]+)?$/;
+
+        // Get Object Name & Check Is Valid
+        let objectName;
+        do {
+            objectName = prompt("Enter the PROJECT name:");
+            if (objectName === null) break; // On Cancel => Go Out
+            objectName = objectName.trim().toUpperCase();
+        } while (!nameRegex.test(objectName));
+
+
+
+        // Get Count Of Properties & Check Is Valid
+        let propertyCount;
+        do {
+            propertyCount = prompt("How many properties do you want to add?");
+            if (propertyCount === null) break;
+            propertyCount = parseInt(propertyCount);
+        } while (isNaN(propertyCount) || propertyCount <= 0);
+
+
+
+        // Get Properties & Values & Check Is Valid
+        let properties = {};
+        for (let i = 0; i < propertyCount; i++) {
+            let propName, propValue;
+
+            // Get Property Name
+            do {
+                propName = prompt(`Enter name of property ${i + 1}:`);
+                if (propName === null) break;
+                propName = propName.trim().toUpperCase();
+            } while (!nameRegex.test(propName));
+
+            // Get Property Value
+            if (propName !== null) {
+                do {
+                    propValue = prompt(`Enter value for "${propName}":`);
+                    if (propValue === null) break;
+                    propValue = propValue.trim();
+                } while (propValue === "");
+
+                // Check if it Is NAN Or Isn't NAN
+                if (!isNaN(propValue)) {
+                    properties[propName] = Number(propValue); // If Isn't NAN => Convert it To Number And Assign It
+                } else {
+                    properties[propName] = propValue; // IF Is NAN => Leave it the same And Assign it
+                }
+            }
+        }
+
+
+
+        // Create Dynamic Object
+        if (objectName !== null && propertyCount) {
+            const project = {
+                name: objectName,
+                ...properties,
+
+                printData() {
+                    console.log(`Project Name: ${this.name}`);
+                    console.log(`Project Name: ${this.name}`);
+                    for (let key in properties) {
+                        const val = this[key];
+                        const isNumber = typeof val === 'number';
+                        console.log(`${key}: ${isNumber ? val : `"${val}"`}`);
+                    }
+                }
+            };
+            console.log(project)
+
+            project.printData();
+        }
+
+        /**
+        ** =========================== Other Ways TO Create Object ===========================
+        */
+
+
+        // let projectID, projectName, projectDuration;
+
+        // // Get Project ID
+        // do {
+        //     projectID = prompt("Enter Your Project ID");
+        // } while (!/^\d{1,10}$/.test(projectID));
+
+        // // Get Project Name
+        // do {
+        //     projectName = prompt("Enter Your Project Name");
+        // } while (/[^a-zA-Z0-9 ]/.test(projectName));
+
+        // // Get Project Duration
+        // do {
+        //     projectDuration = prompt("Enter Your Project Duration");
+        // } while (/[^0-9.,]/.test(projectDuration));
+
+        // const project = {
+        //     ID: projectID,
+        //     Name: projectName,
+        //     Duration: projectDuration,
+
+        //     printData() {
+        //         console.log(`Project ID: ${this.ID}, Name: ${this.Name}, Duration: ${this.Duration} Hour`);
+        //     }
+        // }
+        // project.printData();
+
+        // /**
+        // ** =========================== Other Ways TO Create Object ===========================
+        // */
+
+        // // Define Constructor Function
+        // function CF_Obj(id, name, dur) {
+        //     this.ID = id;
+        //     this.Name = name;
+        //     this.Duration = dur;
+
+        //     this.printData = function () {
+        //         console.log(`Project ID: ${this.ID}, Name: ${this.Name}, Duration: ${this.Duration} Hour`);
+        //     }
+        // }
+
+        // // Creat & Run New Obj
+        // const CF_New = new CF_Obj(projectID, projectName, projectDuration);
+
+        // // Define Class Object
+        // class Class_Obj {
+        //     constructor(id, name, dur) {
+        //         this.ID = id;
+        //         this.Name = name;
+        //         this.Duration = dur;
+        //     }
+        //     printData = function () {
+        //         console.log(`Project ID: ${this.ID}, Name: ${this.Name}, Duration: ${this.Duration} Hour`);
+        //     }
+        // }
+
+        // // Creat & Run New Obj
+        // const New_Class_Obj = new Class_Obj(projectID, projectName, projectDuration);
+    </script>
+</body>
+
+</html>

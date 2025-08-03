@@ -1,0 +1,173 @@
+<html lang="en">
+
+<head>
+    <title>News</title>
+    <style>
+        #container {
+            width: fit-content;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #333;
+            background-color: #eee;
+            text-align: center;
+        }
+
+        #container div {
+            margin: 20px;
+        }
+
+        table {
+            border: 1px solid;
+            width: 100%;
+            text-align: center;
+        }
+
+        table tr:first-child {
+            background-color: #333;
+        }
+
+        th,
+        td {
+            border: 1px solid;
+            padding: 5px;
+            color: white;
+        }
+
+        th:first-child {
+            width: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div>
+            <span>News Type: </span>
+            <input type="radio" name="news" prop="red" id="sport" />
+            <label for="sport">Sport</label>
+            <input type="radio" name="news" prop="red" id="social" />
+            <label for="social">Social</label>
+            <input type="radio" name="news" prop="red" id="politic" />
+            <label for="politic">Politic</label>
+        </div>
+        <div>
+            <input type="text" name="newsTxt" id="newsTxt" placeholder="Add Your Text Here" />
+            <input type="submit" name="submit" value="Add" id="submit" />
+        </div>
+        <div>
+            <label for="search">
+                Search :
+                <input type="search" name="search" id="search" placeholder="Add Your Text Here" />
+            </label>
+        </div>
+        <div id="showNews">
+            <table>
+                <tr>
+                    <th>N-Type</th>
+                    <th>The News</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Add New Row
+        function addNews() {
+            var newRow = document.createElement("tr");
+
+            var selectedRadio = document.querySelector(
+                "input[name='news']:checked"
+            );
+            if (!selectedRadio) {
+                alert("Please select a news type.");
+                return;
+            }
+
+            var newsText = document.querySelector("#newsTxt");
+            if (newsText.value.trim() === "") {
+                alert("Please enter the news text.");
+                return;
+            }
+
+            var newsType = selectedRadio.nextElementSibling.textContent;
+            var newsContent = newsText.value.trim();
+
+            // check duplicate: same news with same type
+            var isDuplicate = false;
+            var rows = document.querySelectorAll(
+                "#showNews tr:not(:first-child)"
+            );
+            rows.forEach(function (row) {
+                var type = row.children[0].textContent.trim();
+                var text = row.children[1].textContent.trim();
+                if (type === newsType && text === newsContent) {
+                    isDuplicate = true;
+                }
+            });
+
+            if (isDuplicate) {
+                alert("This News Has Already Been Added");
+                newsText.value = "";
+                return;
+            }
+
+            // continue adding
+            var typeCell = document.createElement("td");
+            typeCell.textContent = newsType;
+
+            var textCell = document.createElement("td");
+            var preElement = document.createElement("pre");
+            preElement.textContent = newsContent;
+            textCell.appendChild(preElement);
+
+            newRow.appendChild(typeCell);
+            newRow.appendChild(textCell);
+
+            // Color by type
+            switch (newsType.toLowerCase()) {
+                case "sport":
+                    newRow.style.backgroundColor = "red";
+                    break;
+                case "social":
+                    newRow.style.backgroundColor = "green";
+                    break;
+                case "politic":
+                    newRow.style.backgroundColor = "blue";
+                    break;
+            }
+
+            document.querySelector("#showNews table").appendChild(newRow);
+            newsText.value = "";
+        }
+
+        document.getElementById("submit").onclick = addNews;
+
+        // Search For News
+        var searchInput = document.getElementById("search");
+        function filterNews() {
+            var searchValue = searchInput.value.toLowerCase();
+            var rows = document.querySelectorAll(
+                "#showNews tr:not(:first-child)"
+            );
+
+            rows.forEach(function (row) {
+                var cells = row.querySelectorAll("td");
+                var typeText = cells[0].textContent.toLowerCase();
+                var newsText = cells[1].textContent.toLowerCase();
+
+                if (
+                    typeText.includes(searchValue) ||
+                    newsText.includes(searchValue)
+                ) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        searchInput.oninput = filterNews;
+    </script>
+</body>
+
+</html>

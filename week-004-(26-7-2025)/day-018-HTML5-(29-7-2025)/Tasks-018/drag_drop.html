@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/drag_drop.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dragdrop-page">
+    <h1>HTML5 Day 3 Tasks</h1>
+    <div class="tabs">
+        <a href="index.html" class="tab-button">Home</a>
+        <a href="calculator.html" class="tab-button">➕ Calculator</a>
+        <a href="video.html" class="tab-button">🎬 Video Player</a>
+        <a href="canvas.html" class="tab-button">✍️ Canvas Pen</a>
+        <a href="drag_drop.html" class="tab-button">📦 Drag & Drop</a>
+        <a href="map.html" class="tab-button">📍 Location Map</a>
+    </div>
+    <div id="project-content">
+        <div class="shop-wrapper">
+            <div class="section">
+                <h2>Products</h2>
+                <div class="product-area" id="product-area">
+                    <div class="product" draggable="true" data-id="p1-1" data-stock="5" data-price="10">
+                        <img src="UP/1.jpg" alt="Product 1" />
+                        <div class="stock">5</div>
+                        <div class="price">$10</div>
+                    </div>
+                    <div class="product" draggable="true" data-id="p2-1" data-stock="3" data-price="20">
+                        <img src="UP/2.jpg" alt="Product 2" />
+                        <div class="stock">3</div>
+                        <div class="price">$20</div>
+                    </div>
+                    <div class="product" draggable="true" data-id="p3-1" data-stock="4" data-price="15">
+                        <img src="UP/3.jpg" alt="Product 3" />
+                        <div class="stock">4</div>
+                        <div class="price">$15</div>
+                    </div>
+                    <div class="product" draggable="true" data-id="p1-2" data-stock="1" data-price="10">
+                        <img src="UP/4.jpg" alt="Product 4" />
+                        <div class="stock">1</div>
+                        <div class="price">$10</div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Cart</h2>
+                <div class="cart-area" id="cart-area">
+                    <div class="empty-message" id="empty-cart">Drop items here</div>
+                </div>
+                <div class="cart-summary">
+                    <span>Total Items: <span id="total-count">0</span></span>
+                    <span>Total Price: $<span id="total-price">0.00</span></span>
+                </div>
+                <button class="reset-btn" id="reset-btn">Reset Cart</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/drag_drop.js"></script>
+</body>
+
+</html>
