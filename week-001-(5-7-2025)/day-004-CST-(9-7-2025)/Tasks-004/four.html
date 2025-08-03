@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Task 4</title>
+        <script>
+            // #region Input
+            var userInput;
+            var iRad;
+            var tRad;
+            while (true) {
+                userInput = prompt("Enter Your Number To Convert It between Different Radices");
+                if (userInput === null || userInput.trim() === "") {
+                    alert("Input Can't Be Empty");
+                    continue;
+                } else if (isNaN(parseInt(userInput, 36))) {
+                    alert("Please Enter Valid Number");
+                    continue;
+                }
+                break;
+            }
+
+            while (true) {
+                iRad = prompt("Enter Initial Radix From 2 To 36");
+                if (iRad === "" || iRad === null) {
+                    alert("Initial Radix Can't Be Empty");
+                    continue;
+                } else if (isNaN(Number(iRad)) || iRad < 2 || iRad > 36) {
+                    alert("Please Enter Valid Radix Between 2 : 36");
+                    continue;
+                } else if (isNaN(parseInt(userInput, iRad))) {
+                    alert("Your Number Isn't valid In This Initial Radix.");
+                    continue;
+                } else {
+                    break;
+                }
+            }
+
+            while (true) {
+                tRad = prompt("Enter Target Radix From 2 To 36");
+                if (tRad === "" || tRad === null) {
+                    alert("Target radix can't be empty");
+                    continue;
+                } else if (isNaN(Number(tRad)) || tRad < 2 || tRad > 36) {
+                    alert("Please Enter Valid Radix Between 2 : 36");
+                    continue;
+                } else {
+                    break;
+                }
+            }
+
+            console.log(parseInt(userInput, iRad));
+            console.log(parseInt(userInput, iRad).toString());
+            console.log(parseInt(userInput, iRad).toString(tRad));
+            alert("Yor Number is : " + userInput + " Initial Radix is : " + iRad + " Target Radix is : " + tRad + "\n // Your Number After Conversion = " + parseInt(userInput, iRad).toString(tRad));
+        </script>
+    </head>
+    <body></body>
+</html>

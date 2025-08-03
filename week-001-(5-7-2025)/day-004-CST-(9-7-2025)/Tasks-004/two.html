@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Task 2</title>
+        <script>
+            // #region Get Input & Validation
+            var userInput = 0;
+            var arr = [];
+            var results = [];
+            while (arr.length < 3) {
+                userInput = prompt(`Add Number ${arr.length + 1}`);
+                if (userInput === null || isNaN(Number(userInput)) || userInput === "") {
+                    continue;
+                } else if (+userInput == 0) {
+                    break;
+                }
+                arr.push(Number(userInput));
+            }
+            // #endregion Get Input
+
+            if (arr.length === 3) {
+                // #region Calculations
+                results[0] = arr[0] + arr[1] + arr[2];
+                results[1] = arr[0] * arr[1] * arr[2];
+                results[2] = arr[0] / arr[1] / arr[2];
+                // #endregion Calculations
+
+                // #region Create Elements
+                document.write("<h1>Adding -- Multiplying -- and Dividing 3 Values</h1>");
+                document.write("<hr/>");
+                document.write("<h3><span>Sum of 3 Values : </span> " + arr[0] + " + " + arr[1] + " + " + arr[2] + " = " + results[0] + "</h3>");
+                document.write("<br/>");
+                document.write("<h3><span>Multiplication of 3 Values : </span> " + arr[0] + " * " + arr[1] + " * " + arr[2] + " = " + results[1] + "</h3>");
+                document.write("<br/>");
+                document.write("<h3><span>Division of 3 Values : </span> " + arr[0] + " / " + arr[1] + " / " + arr[2] + " = " + results[2] + "</h3>");
+                document.write("<br/>");
+                // #endregion Create Elements
+
+                // #region styling
+                var changeColor = document.querySelectorAll("span");
+                for (var i = 0; i < changeColor.length; i++) {
+                    changeColor[i].style.color = "red";
+                }
+                // #endregion styling
+            } else {
+                document.write("<h1>You Are Canceled</h1>");
+            }
+            console.log(arr);
+        </script>
+    </head>
+    <body></body>
+</html>

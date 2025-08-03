@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 7</title>
+        <style></style>
+        <script>
+            function getValidNumber(inputStr) {
+                if (inputStr === "") {
+                    return "You Can't Leave The Field Empty";
+                } else if (inputStr.includes(" ")) {
+                    return "You Can't Enter Spaces Between The Numbers";
+                } else if (isNaN(Number(inputStr))) {
+                    return "Please Enter Valid Number";
+                } else {
+                    return null;
+                }
+            }
+
+            function showMenu(array) {
+                var again;
+
+                do {
+                    var choice = prompt(`
+    Choose what you want:
+            ===================================
+            a: Display the array as is
+            ===================================
+            b: Display the array in ascending order
+            ===================================
+            c: Display the array in descending order
+            ===================================
+            d: Display the array in reverse
+            ===================================
+            e: Display only even numbers
+            ===================================
+            f: Enter a number and display its divisors
+            ===================================
+            g: Display a 30% discount on numbers
+            ===================================
+            h: Display the array as a string separated by ***
+            ===================================
+            q: To Quit`)
+                        .toLowerCase()
+                        .trim();
+
+                    switch (choice) {
+                        case "a":
+                            alert("Original Array :\n [ " + array.join(", ") + " ]");
+                            break;
+
+                        case "b":
+                            alert("Ascending Order :\n" + [...array].sort((a, b) => a - b).join(", "));
+                            break;
+
+                        case "c":
+                            alert("Descending Order :\n" + [...array].sort((a, b) => b - a).join(", "));
+                            break;
+
+                        case "d":
+                            alert("Reversed Array :\n" + [...array].reverse().join(", "));
+                            break;
+
+                        case "e":
+                            var evens = array.filter((n) => n % 2 === 0);
+                            if (evens.length === 0) {
+                                alert("There are no even numbers.");
+                            } else {
+                                alert("Even Numbers Are :\n" + evens.join(", "));
+                            }
+                            break;
+
+                        case "f":
+                            var div = prompt("Enter the number to divide:");
+                            if (div === null || div === "" || isNaN(div)) {
+                                alert("Invalid input.");
+                                break;
+                            }
+                            div = Number(div.trim());
+                            var result = array.filter((n) => n % div === 0);
+                            if (result.length === 0) {
+                                alert(`There are no numbers divisible by ${div}`);
+                            } else {
+                                alert(`Divisible numbers ${div}:\n` + result.join(", "));
+                            }
+                            break;
+
+                        case "g":
+                            var discounted = array.map((n) => (n * 0.7).toFixed(2));
+                            if (discounted.length === 1) {
+                                alert(" 30% discount on numbers:\n" + discounted);
+                            } else {
+                                alert(" 30% discount on numbers:\n" + discounted.join(", "));
+                            }
+                            break;
+
+                        case "h":
+                            alert("String :\n" + array.join(" *** "));
+                            break;
+
+                        case "q":
+                            break;
+
+                        default:
+                            alert("Incorrect choice!");
+                            continue;
+                    }
+                    again = confirm("Do you want to perform a different operation on the same array??");
+                } while (again === true);
+            }
+
+            var sizeInput;
+            var arr = [];
+
+            while (true) {
+                sizeInput = prompt("Please Enter Length Of Array.").trim();
+                var errorMsg = getValidNumber(sizeInput);
+                if (errorMsg !== null) {
+                    alert(errorMsg);
+                    continue;
+                } else {
+                    for (var i = 0; i < Number(sizeInput); i++) {
+                        var value = prompt(`Enter Number ${i + 1}:`).trim();
+                        errorMsg = getValidNumber(value);
+                        if (errorMsg !== null) {
+                            alert(errorMsg);
+                            i--;
+                        } else {
+                            arr.push(Number(value));
+                        }
+                    }
+                    showMenu(arr);
+                }
+                var repeat = confirm("Do you want to enter a new Array?");
+                if (repeat === true) {
+                    continue;
+                } else {
+                    break;
+                }
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

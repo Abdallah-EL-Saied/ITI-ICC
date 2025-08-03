@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Task 6</title>
+        <script>
+            // #region Write Logic
+
+            //#region Step 1 : Get n Numbers From User And Push Them In Array
+            var loopNum = 0;
+            var userInput = 0;
+            var numbersArr = [];
+
+            while (true) {
+                loopNum = prompt("How many numbers do you want to enter?");
+                if (isNaN(Number(loopNum)) || loopNum === "") {
+                    continue;
+                } else if (loopNum == 0) {
+                    break;
+                } else {
+                    for (var round = 1; round <= Number(loopNum); round++) {
+                        userInput = prompt(`Add Your Number ` + round);
+                        if (isNaN(Number(userInput)) || userInput === "") {
+                            round--;
+                            continue;
+                        } else {
+                            numbersArr.push(userInput);
+                        }
+                    }
+                }
+                break;
+            }
+            //#endregion Step 1 : Get n Numbers From User And Push Them In Array
+
+            //#region Step 2 : Get To Biggest Lingth Of Number Before ( . )
+            var biggerNum = 0;
+
+            for (var i = 0; i < numbersArr.length; i++) {
+                var numParts = numbersArr[i].split(".");
+                if (numParts[0].length > biggerNum) {
+                    biggerNum = numParts[0].length;
+                }
+            }
+            //#endregion Step 2 : Get To Biggest Lingth Of Number Before ( . )
+
+            //#region Step 3 : Print All Numbers With Fixed Lingth Before & After ( . )
+
+            var totalLength = 15;
+            for (var i = 0; i < numbersArr.length; i++) {
+                var numsBeforeDotLength = numbersArr[i].split(".")[0].length;
+                var decimalNums = totalLength - numsBeforeDotLength - 1;
+                if (decimalNums < 0) {
+                    decimalNums = 0;
+                }
+                document.write("<p>" + Number(numbersArr[i]).toFixed(decimalNums) + "</p>");
+            }
+            console.log(biggerNum);
+            console.log(numbersArr);
+            //#endregion Step 3 : Print All Numbers With Fixed Lingth Before & After ( . )
+        </script>
+    </head>
+    <body></body>
+</html>

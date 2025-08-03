@@ -1,0 +1,210 @@
+<html>
+    <head>
+        <title>Task 6</title>
+        <!-- This File is Common Between All Tasks. 
+            It Contains :
+                1- reset Padding & Margin
+                2- Centralize the Main Container
+        -->
+        <link rel="stylesheet" href="css/mainStyle.css">
+        <style>
+            /*#region Containers*/
+            div#mainContainer {
+                width: 100%;
+                background-color: #eee;
+            }
+            table {
+                width: 800px;
+                padding: 5px;
+                background-color: rgb(83, 81, 81);
+                position: absolute;
+                top: calc(50% - (400px / 2));
+                left: calc(50% - (800px / 2));
+                border-spacing: 5;
+            }
+            /*#endregion Containers*/
+            
+            /*#region Common Properties*/
+            .price {
+                padding: 15px 10px;
+                margin: 5px;
+                color: white;
+                font-size: small;
+            }
+            .price span {
+                font-size: 30px;
+                font-weight: bold;
+            }
+            td {
+                background-color: #292a2b;
+            }
+            
+            td:not(td:first-child),
+            thead td:first-child {
+                text-align: center;
+            }
+            p {
+                color: #a1a1a1;
+            }
+            thead span,
+            tfoot span,
+            thead td:first-child p,
+            #check td:not(:first-child) {
+                color:#00bcd4;
+            }
+            /*#endregion Common Properties*/
+            
+            /*#region Other Properties*/
+            thead tr .plan {
+                background-color: #00bcd4;
+                padding: 10px;
+                margin: 5px;
+                color: white;
+            }
+            tbody {
+                color: #fff;
+                font-size: x-small;
+            }
+            tbody td {
+                padding: 5px;
+            }
+            tbody span {
+                color: #fff;
+                font-weight: bold;
+            }
+            
+            thead .price {
+                background-color: black;
+            }
+            button {
+                padding: 5px 15px;
+                background-color: #00bcd4;
+                margin: 0 5px 15;
+                color: white;
+            }
+            /*#endregion Other Properties*/
+            </style>
+    </head>
+    <body>
+        <div id="mainContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <td rowspan="3">
+                            <p>Chose<br>Your Plan</p>
+                        </td>
+                        <td rowspan="3">
+                            <p class="plan">Starter</p>
+                            <p class="price">$ <span>10</span><br/>Per Month</p>
+                        </td>
+                        <td rowspan="3">
+                            <p class="plan">Corporate</p>
+                            <p class="price">$ <span>20</span><br/>Per Month</p>
+                        </td>
+                        <td rowspan="3">
+                            <p class="plan">Business</p>
+                            <p class="price">$ <span>30</span><br/>Per Month</p>
+                        </td>
+                        <td rowspan="3">
+                            <p class="plan">Professional</p>
+                            <p class="price">$ <span>40</span><br/>Per Month</p>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amount of Spacce</td>
+                        <td>
+                            <p><span>10GB</span> Disk Space</p>
+                        </td>
+                        <td>
+                            <p><span>20GB</span> Disk Space</p>
+                        </td>
+                        <td>
+                            <p><span>30GB</span> Disk Space</p>
+                        </td>
+                        <td>
+                            <p><span>40GB</span> Disk Space</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bandwidth Per Month</td>
+                        <td>
+                            <p><Span>100GB</Span> Bandwidth</p>
+                        </td>
+                        <td>
+                            <p><Span>200GB</Span> Bandwidth</p>
+                        </td>
+                        <td>
+                            <p><Span>300GB</Span> Bandwidth</p>
+                        </td>
+                        <td>
+                            <p><Span>400GB</Span> Bandwidth</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>MySQL Database</td>
+                        <td>
+                            <p><span>1</span> Databases</p>
+                        </td>
+                        <td>
+                            <p><span>1</span> Databases</p>
+                        </td>
+                        <td>
+                            <p><span>1</span> Databases</p>
+                        </td>
+                        <td>
+                            <p><span>1</span> Databases</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E-Mail Accounts</td>
+                        <td><p><span>1</span> Accounts</p></td>
+                        <td><p><span>1</span> Accounts</p></td>
+                        <td><p><span>1</span> Accounts</p></td>
+                        <td><p><span>1</span> Accounts</p></td>
+                    </tr>
+                    <tr id="check">
+                        <td>24h Support</td>
+                        <td>&check;</td>
+                        <td>&check;</td>
+                        <td>&check;</td>
+                        <td>&check;</td>
+                    </tr>
+                    <tr id="cross">
+                        <td>E-Mail Support</td>
+                        <td>&cross;</td>
+                        <td>&cross;</td>
+                        <td>&cross;</td>
+                        <td>&cross;</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td rowspan="3"></td>
+                        <td rowspan="3">
+                            <P class="price">$ <span>10</span><br/>Per Month</P>
+                            <button type="button">Sign Up</button>
+                        </td>
+                        <td rowspan="3">
+                            <P class="price">$ <span>20</span><br/>Per Month</P>
+                            <button type="button">Sign Up</button>
+                        </td>
+                        <td rowspan="3">
+                            <P class="price">$ <span>30</span><br/>Per Month</P>
+                            <button type="button">Sign Up</button>
+                        </td>
+                        <td rowspan="3">
+                            <P class="price">$ <span>40</span><br/>Per Month</P>
+                            <button type="button">Sign Up</button>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                </tfoot>
+            </table>
+        </div>
+    </body>
+</html>

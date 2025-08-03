@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <title>Task 1</title>
+        <!-- This File is Common Between All Tasks. 
+            It Contains :
+                1- reset Padding & Margin
+                2- Centralize the Main Container
+        -->
+        <link rel="stylesheet" href="css/mainStyle.css">
+        <style>
+            /*#region Containers*/
+            div#mainContainer {
+                width: 100%;
+                height: 100%;
+                background-image: url(photos/photo1.png);
+            }
+            
+            
+            #mainBox {
+                width: 700px;
+                padding: 20px;
+                background-color: white;
+                border: 15px ridge gray;
+                position: absolute;
+                top: calc(50% - (700px / 2));
+                left: calc(50% - (700px / 2));
+            }
+            /*#endregion Containers*/
+
+            /*#region Common Properties*/
+            div.childBox {
+                background-color: #ffbdad;
+                padding: 30px 20px;
+                margin: 10px;
+                border: 2px solid #aaa;
+            }
+            
+            
+            div.childBox:not(.three) {
+                text-align: center;
+            }
+            
+            
+            ul {
+                list-style: none;
+            }
+            
+            
+            div.childBox.one ul li,
+            div.childBox.two ul li {
+                display: inline-block;
+            }
+            /*#endregion Common Properties*/
+
+            /*#region Other Style*/
+            
+            /*#region Box One*/
+            h2 {
+                display: inline-block;
+            }
+            
+            div.childBox.one li {
+                vertical-align: middle;
+            }
+            /*#endregion Box One*/
+            
+            /*#region Box Two*/
+            div.childBox.two li {
+                margin: 0 5px;
+            }
+            /*#endregion Box Two*/
+            
+            /*#region Box Three*/
+            div.childBox.three ul li h3 {
+                margin-bottom: 20px;
+                text-decoration: underline;
+            }
+
+            div.childBox.three ul li p {
+                font-size: smaller;
+                font-style: italic;
+                color: #777;
+            }
+
+            div.childBox.three ul li p span {
+                font-size: 20px;
+                font-style: normal;
+                font-weight: bold;
+                color: #000;
+            }
+            
+            div.childBox.three ol {
+                list-style: inside;
+                list-style-image: url(photos/photo4.png);
+            }
+            
+            div.childBox.three ol li a {
+                color: red;
+            }
+            /*#endregion Box Three*/
+            
+            /*#region Paragraph*/
+            div#mainBox > p {
+                margin: 10px;
+                background-color: #ffbdad;
+                text-align: center;
+                font-weight: bold;
+            }
+            /*#endregion Paragraph*/
+
+            /*#endregion Other Style*/
+        </style>
+    </head>
+    <body>
+        <div id="mainContainer">
+            <div id="mainBox">
+                <div class="childBox One">
+                    <ul>
+                        <li>
+                            <img src="photos/photo2.png" alt="">
+                        </li>
+                        <li>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                        </li>
+                        <li>
+                            <img src="photos/photo3.png" alt="">
+                        </li>
+                    </ul>
+                </div>
+                <div class="childBox two">
+                    <ul>
+                        <li><a href="https://www.google.com">
+                            https://www.google.com
+                        </a></li>
+                        <li><a href="https://www.google.com">
+                            https://www.google.com
+                        </a></li>
+                        <li><a href="https://www.google.com">
+                            https://www.google.com
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="childBox three">
+                    <ul>
+                        <li>
+                            <h3>Intoduction</h3>
+                            <p>
+                                <span>Lorem ipsum dolor sit amet.</span>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur doloremque ab quia mollitia tempora. Cupiditate, in consectetur accusamus facilis, eos dicta sed ipsa inventore recusandae beatae reprehenderit et blanditiis laboriosam.
+                            </p>
+                        </li>
+                        <li>
+                            <h3>Intoduction</h3>
+                            <ol>
+                                <li>
+                                    <a href="">Calculator</a>
+                                </li>
+                                <li>
+                                    <a href="">Interest Calculator</a>
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+                <p class="reg">Terps Calculators Inc. &reg;</p>
+            </div>
+        </div>
+    </body>
+</html>

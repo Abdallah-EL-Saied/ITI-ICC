@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table{
+            width:200px;
+            padding:10px;
+            margin:10px auto;
+            border:2px solid black;
+            text-align:center;
+        }
+        td,th{
+            border:1px solid black;
+        }
+    </style>
+    <script>
+        //callable by document. write | writeline(values)
+        //document.writeln("Hello<br/>");
+        //document.writeln("welcome");
+        /*document.writeln("Welcome");*/
+        var arr = [10, 20, 30, 40, 50, 60];
+        document.write("<table><tr><th>Values</th></tr>");
+        var sum=0;
+        for (var i = 0; i < arr.length; i++) {
+            if(i%2==0)
+                document.write("<tr bgcolor='lightyellow'><td>" + arr[i] + "</td></tr>");
+            else document.write("<tr bgcolor='lightpink'><td>" + arr[i] + "</td></tr>");
+            sum += arr[i];
+        }
+        document.write("<tr><th>Summation = " + sum + "</th></tr></table>");
+    </script>
+</head>
+
+<body>
+
+    </body>
+</html>

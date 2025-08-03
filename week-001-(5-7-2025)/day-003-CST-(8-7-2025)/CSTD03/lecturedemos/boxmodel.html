@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        /*p{
+            border-color:red;
+            border-width:2px;
+            border-style:solid;
+            width:500px;
+        }*/
+        #one {
+            /*padding-left: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            padding-right: 20px;*/
+            /*padding:20px 50px 50px 20px;*/
+            /*padding: 20px 50px;*/
+        }
+        p.iti {
+            /*margin-top:50px;*/
+            width: 300px;
+            /*border:5px solid black;*/
+            margin: 10px auto;
+            text-align: center;
+            padding: 10px 0;
+            /*border-left: 2px solid red;
+            border-right: 2px solid red;*/
+            border: 2px solid red;
+            /* border-top-left-radius:20px;
+            border-bottom-right-radius:20px;*/
+            border-radius: 30px;
+            /*color:rgb(255,0,0);*/
+            /*font-size: 30px;
+            font-family: Tahoma;
+            font-weight:bold;*/
+            font:bold 20px verdana;
+            word-spacing:10px;
+            letter-spacing:2px;
+            text-transform:uppercase;
+        }
+            p.iti:hover {
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+            }
+        /*pesdudo classes selectors : hover , active , focus*/
+       
+        p:hover{
+            background-color:yellow;
+
+        }
+        p:active {
+            background-color: lightblue;
+        }
+        input:hover{
+            background-color:red;
+        }
+        
+        input:focus {
+            background-color: darkblue;
+        }
+        input:active {
+            background-color: yellow;
+        }
+        div{
+            border:2px solid black;
+            padding:10px;
+            margin:10px auto;
+            text-align:center;
+        }
+        img{
+            width:200px;
+            height:200px;
+            border-radius:50%;
+            opacity:0.5;
+        }
+        img:hover{
+            opacity:1;
+        }
+        #second{
+            opacity:0;
+        }
+    </style>
+</head>
+<body>
+    <!--<p id="one">ITI Tanta Branch</p>-->
+    <div>
+        <img src="UP/1.jpg" />
+        <img src="UP/1.jpg" id="second" />
+        <img src="UP/1.jpg" />
+    </div>
+    <input type="text"/>
+    <p class="iti">ITI Tanta Branch</p>
+    <p class="iti">ITI Tanta Branch</p>
+    <p class="iti">ITI Tanta Branch</p>
+</body>
+</html>

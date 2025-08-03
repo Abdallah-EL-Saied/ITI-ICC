@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <title>Task 4</title>
+        <!-- This File is Common Between All Tasks. 
+            It Contains :
+                1- reset Padding & Margin
+                2- Centralize the Main Container
+        -->
+        <link rel="stylesheet" href="css/mainStyle.css">
+        <style>
+            /*#region Containers*/
+            div#mainContainer {
+                width: 100%;
+                height: 100%;
+                background-color: #eee;
+            }
+            form {
+                width: 1000px;
+                padding: 30px;
+                background-color: white;
+                border: 2px solid #bbb;
+                position: absolute;
+                top: calc(50% - (200px / 2));
+                left: calc(50% - (1000px / 2));
+            }
+            /*#endregion Containers*/
+
+            
+            /*#region Common Properties*/
+            table {
+                border-spacing: 0;
+            }
+            table tr td:first-child,
+            table tr td:last-child {
+                width: fit-content;
+                padding: 20px;
+            }
+            table tr td:nth-child(2) {
+                width: 100%;
+                text-align: left;
+                padding-left: 0;
+            }
+
+            tr:not(:last-child) td {
+                border-bottom: 1px solid #eee;
+            }
+
+            img {
+                display: block;
+                width: 80px;
+                border-radius: 50%;
+            }
+
+            h4 {
+                color: rgb(55, 219, 219);
+                margin-bottom: 10px;
+            }
+
+            button {
+                padding: 5px 15px;
+                background-color: #eee;
+                cursor: pointer;
+                outline: none;
+                border: 0;
+            }
+
+
+            /*#endregion Common Properties*/
+            
+
+            /*#region Other Properties*/
+
+
+
+            /*#endregion Other Properties*/
+            </style>
+    </head>
+    <body>
+        <div id="mainContainer">
+            <form action="">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="photos/photo9.png" alt="">
+                        </td>
+                        <td>
+                            <h4>General Forms</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, voluptatum.</p>
+                        </td>
+                        <td>
+                            <button type="button">Select</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="photos/photo10.png" alt="">
+                        </td>
+                        <td>
+                            <h4>Embeded Forms</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, voluptatum.</p>
+                        </td>
+                        <td>
+                            <button type="button">Select</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="photos/photo11.png" alt="">
+                        </td>
+                        <td>
+                            <h4>subscriber Popup</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, voluptatum.</p>
+                        </td>
+                        <td>
+                            <button type="button">Select</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
