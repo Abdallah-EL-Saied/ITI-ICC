@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Task 4</title>
+        <style>
+            label {
+                display: block;
+                margin: 20px;
+            }
+            div,
+            input[type="submit"] {
+                margin: 20px;
+            }
+            div label {
+                display: inline-block;
+            }
+            img {
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <form id="testForm" onsubmit="setCookies(this); return false;"> -->
+        <form id="testForm" method="post" onsubmit="setCookies(this)">
+            <label>
+                Enter Your Name
+                <input type="text" name="userName" id="name" />
+            </label>
+
+            <label>
+                Enter Your Age
+                <input type="number" name="userAge" id="age" />
+            </label>
+
+            <div>
+                <p>Select Your Gender</p>
+                <input id="male" type="radio" name="gender" value="male" />
+                <label for="male"><img src="male.jpg" alt="" /></label>
+                <input id="female" type="radio" name="gender" value="female" />
+                <label for="female"><img src="female.jpg" alt="" /></label>
+            </div>
+
+            <label>
+                Select Your Favorit Color:
+                <select name="favColor" id="favColor">
+                    <option value="red">red</option>
+                    <option value="green">green</option>
+                    <option value="blue">blue</option>
+                    <option value="yellow">yellow</option>
+                </select>
+            </label>
+
+            <input type="submit" name="submit" id="submit" />
+        </form>
+
+        <script>
+            function setCookies(form) {
+                var today = new Date();
+                var expiry = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
+                var expires = "expires=" + expiry.toUTCString();
+
+                var name = form.userName.value;
+                var age = form.userAge.value;
+                var gender = "";
+                var color = form.favColor.value;
+
+                var genderOptions = form.gender;
+                for (var i = 0; i < genderOptions.length; i++) {
+                    if (genderOptions[i].checked) {
+                        gender = genderOptions[i].value;
+                        break;
+                    }
+                }
+
+                document.cookie = "userName=" + name + ";" + expires + ";path=/";
+                document.cookie = "userAge=" + age + ";" + expires + ";path=/";
+                document.cookie = "gender=" + gender + ";" + expires + ";path=/";
+                document.cookie = "favColor=" + color + ";" + expires + ";path=/";
+
+                window.location.href = "testPage.html";
+            }
+        </script>
+    </body>
+</html>

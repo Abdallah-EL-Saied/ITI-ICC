@@ -1,0 +1,14 @@
+/*Global Values*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Main Container in Center*/
+#mainContainer {
+    margin: auto;
+    border: 1px solid;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.4;
+}

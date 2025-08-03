@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Task 3</title>
+        <style>
+            div {
+                margin: 20px auto;
+                padding: 20px;
+                text-align: center;
+                border: 5px solid;
+            }
+            #box {
+                width: 500px;
+            }
+            img {
+                width: 400px;
+                height: 400px;
+            }
+            input {
+                padding: 5px 15px;
+                margin: 0 25px;
+                font-weight: bold;
+                color: white;
+                outline: 0;
+                border: 0;
+                cursor: pointer;
+            }
+            input.out {
+                opacity: 50%;
+                cursor: context-menu;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <div>
+                <img id="slideShow" src="UP/1.jpg" alt="" />
+            </div>
+            <div>
+                <input id="prev" type="button" style="background-color: orange" value="<" onclick="stepBackward()" />
+                <input id="start" type="button" style="background-color: green" value="Play" onclick="startSlide()" />
+                <input id="end" type="button" style="background-color: red" value="Stop" onclick="stopSlide()" class="out" disabled />
+                <input id="next" type="button" style="background-color: orange" value=">" onclick="stepForward()" />
+            </div>
+        </div>
+        <script>
+            var imgArray = ["UP/1.jpg", "UP/2.jpg", "UP/3.jpg", "UP/4.jpg", "UP/5.jpg", "UP/6.jpg", "UP/7.jpg", "UP/8.jpg", "UP/9.jpg", "UP/10.jpg", "UP/11.jpg", "UP/12.jpg", "UP/13.jpg"];
+            var imgNum = 0;
+            var slide;
+            function stepForward() {
+                imgNum++;
+                if (imgNum === imgArray.length) {
+                    imgNum = 0;
+                }
+                document.getElementById("slideShow").setAttribute("src", imgArray[imgNum]);
+            }
+            function stepBackward() {
+                imgNum--;
+                if (imgNum < 0) {
+                    imgNum = imgArray.length - 1;
+                }
+                document.getElementById("slideShow").setAttribute("src", imgArray[imgNum]);
+            }
+            function startSlide() {
+                const buttonsToDisable = [prev, next, start];
+                buttonsToDisable.forEach((btn) => {
+                    btn.setAttribute("disabled", "disabled");
+                    btn.classList.add("out");
+                });
+                end.removeAttribute("disabled");
+                end.classList.remove("out");
+                slide = setInterval(stepForward, 1000);
+                console.log("pressStart");
+            }
+            function stopSlide() {
+                if (start.hasAttribute("disabled") === true) {
+                    const buttonsToEnable = [start, prev, next];
+                    buttonsToEnable.forEach((btn) => {
+                        btn.removeAttribute("disabled");
+                        btn.classList.remove("out");
+                    });
+                    end.setAttribute("disabled", "disabled");
+                    end.setAttribute("class", "out");
+                    clearInterval(slide);
+                    console.log("pressEnd");
+                }
+            }
+        </script>
+    </body>
+</html>

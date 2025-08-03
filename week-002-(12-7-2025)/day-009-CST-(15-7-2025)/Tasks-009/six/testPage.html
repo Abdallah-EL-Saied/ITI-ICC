@@ -1,0 +1,64 @@
+<html lang="en">
+    <head>
+        <title>Test</title>
+        <style>
+            div {
+                width: fit-content;
+                position: relative;
+                display: none;
+            }
+            p {
+                position: absolute;
+                font-size: 25px;
+                font-weight: bold;
+                /* color: red; */
+                font-family: monospace;
+            }
+            #male p {
+                top: 190px;
+                right: -70px;
+            }
+            #female p {
+                top: 85px;
+                right: -130px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="male">
+            <img src="../UP/male.jpg" alt="" />
+            <p id="maleText"></p>
+        </div>
+        <div id="female">
+            <img src="../UP/female.jpg" alt="" />
+            <p id="femaleText"></p>
+        </div>
+
+        <script>
+            // var quaryData = window.location.search;
+            // quaryData = quaryData
+            //     .slice(1)
+            //     .split("&")
+            //     .map((array) => {
+            //         return array.split("=");
+            //     });
+            var urlData = new URLSearchParams(window.location.search);
+            var username = urlData.get("name");
+            var age = urlData.get("age");
+            var gender = urlData.get("gender");
+            var color = urlData.get("favColor");
+
+            var message = `Hello, ${username}`;
+
+            if (gender === "male") {
+                document.getElementById("male").style.display = "block";
+                document.getElementById("maleText").textContent = message;
+                document.getElementById("maleText").style["color"] = color;
+            } else if (gender === "female") {
+                document.getElementById("female").style.display = "block";
+                document.getElementById("femaleText").textContent = message;
+                document.getElementById("femaleText").style["color"] = color;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Task 2</title>
+        <style></style>
+    </head>
+    <body>
+        <script>
+            var imgArray = ["UP/1.jpg", "UP/2.jpg", "UP/3.jpg", "UP/4.jpg", "UP/5.jpg", "UP/6.jpg", "UP/7.jpg", "UP/8.jpg", "UP/9.jpg", "UP/10.jpg", "UP/11.jpg", "UP/12.jpg", "UP/13.jpg"];
+            var i = imgArray.length - 1;
+            var interval = setInterval(function () {
+                document.querySelector("body").style.backgroundImage = "url('" + imgArray[i] + "')";
+                i--;
+                if (i < 0) {
+                    clearInterval(interval);
+                    setTimeout(function () {
+                        window.close();
+                    }, 500);
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>

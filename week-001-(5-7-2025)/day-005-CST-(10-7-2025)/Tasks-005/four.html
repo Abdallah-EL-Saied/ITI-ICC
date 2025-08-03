@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Task 4</title>
+        <script>
+            function cleanInputFromSpaces(stringNums) {
+                return stringNums.split("-").map(function (num) {
+                    return num.trim();
+                });
+            }
+
+            function checkInputValidation(cleanString) {
+                return !cleanString.some(function (num) {
+                    return isNaN(Number(num)) || num === "" || num.includes(" ");
+                });
+            }
+
+            function checkNumberLength(cleanString) {
+                return cleanString.join("").length === 11 && cleanString[0].length === 3 && cleanString[1].length === 8;
+            }
+
+            function checkNumberFormat(userInput) {
+                return /^\d{3}-\d{8}$/.test(userInput);
+            }
+
+            function checkFirstNumbersValidation(cleanString) {
+                var firstNumbers = ["010", "011", "012", "015"];
+                var firstThreeDigits = cleanString[0].slice(0, 3);
+                return firstNumbers.includes(firstThreeDigits);
+            }
+
+            while (true) {
+                userInput = prompt("Please Enter Your Number Like This Format xxx-xxxxxxxx");
+                var cleanNum = cleanInputFromSpaces(userInput);
+
+                if (!checkInputValidation(cleanNum)) {
+                    alert("Please Enter Valid Number");
+                    continue;
+                } else if (!checkNumberLength(cleanNum)) {
+                    alert("Your Number is Short");
+                    continue;
+                } else if (!checkNumberFormat(cleanNum)) {
+                    alert("Please Enter Valid Format");
+                    continue;
+                } else if (!checkFirstNumbersValidation(cleanNum)) {
+                    alert("Please Enter Valid Code");
+                    continue;
+                }
+
+                document.write("<h2>Your Number Is Valid</h2>");
+
+                console.log("cleanNum:", cleanNum);
+                console.log("Validation:", checkInputValidation(cleanNum));
+                console.log("Length:", checkNumberLength(cleanNum));
+                console.log("Format OK:", checkNumberFormat(cleanNum));
+                console.log("Starts With Valid Code:", checkFirstNumbersValidation(cleanNum));
+
+                break;
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

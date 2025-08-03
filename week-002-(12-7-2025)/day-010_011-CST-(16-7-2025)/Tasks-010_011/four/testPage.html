@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <title>Test</title>
+    <style>
+        div {
+            width: fit-content;
+            position: relative;
+            display: none;
+        }
+
+        p {
+            position: absolute;
+            font-size: 25px;
+            font-weight: bold;
+            /* color: red; */
+            font-family: monospace;
+        }
+
+        #male p {
+            top: 190px;
+            right: -70px;
+        }
+
+        #female p {
+            top: 85px;
+            right: -130px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="male">
+        <img src="male.jpg" alt="" />
+        <p id="maleText">Hello, Abdallah Alsabaa</p>
+    </div>
+    <div id="female">
+        <img src="female.jpg" alt="" />
+        <p id="femaleText">Hello, Abdallah Alsabaa</p>
+    </div>
+
+    <script>
+        // var urlData = document.cookie;
+        // urlData = urlData.split("; ").map((array) => {
+        //     return array.split("=");
+        // });
+        // console.log(urlData);
+
+        function getCookieValue(name) {
+            let cookies = document.cookie.split("; ");
+            for (let i = 0; i < cookies.length; i++) {
+                let parts = cookies[i].split("=");
+                if (parts[0] === name) {
+                    return parts[1];
+                }
+            }
+            return null;
+        }
+        var username = getCookieValue("userName");
+        var age = getCookieValue("userAge");
+        var gender = getCookieValue("gender");
+        var color = getCookieValue("favColor");
+
+        var message = `Hello, ${username}`;
+
+        if (gender === "male") {
+            document.getElementById("male").style.display = "block";
+            document.getElementById("maleText").textContent = message;
+            document.getElementById("maleText").style["color"] = color;
+        } else if (gender === "female") {
+            document.getElementById("female").style.display = "block";
+            document.getElementById("femaleText").textContent = message;
+            document.getElementById("femaleText").style["color"] = color;
+        }
+    </script>
+</body>
+
+</html>

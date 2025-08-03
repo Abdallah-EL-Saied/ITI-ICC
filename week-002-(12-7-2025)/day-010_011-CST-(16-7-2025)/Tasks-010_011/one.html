@@ -1,0 +1,152 @@
+<html lang="en">
+    <head>
+        <title>task 1</title>
+        <style>
+            #container {
+                width: fit-content;
+                margin: 50px auto;
+                padding: 20px;
+                border: 2px solid #333;
+                background-color: #eee;
+                text-align: center;
+            }
+            #container div {
+                margin: 20px;
+            }
+            table {
+                border: 1px solid;
+                width: 100%;
+                text-align: center;
+            }
+            th,
+            td {
+                border: 1px solid;
+                padding: 5px;
+                color: white;
+            }
+            th:first-child {
+                width: 20%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div>
+                <span>News Type: </span>
+                <input type="radio" name="news" prop="red" id="sport" />
+                <label for="sport">Sport</label>
+                <input type="radio" name="news" prop="red" id="social" />
+                <label for="social">Social</label>
+                <input type="radio" name="news" prop="red" id="politic" />
+                <label for="politic">Politic</label>
+            </div>
+            <div>
+                <input type="text" name="newsTxt" id="newsTxt" placeholder="Add Your Text Here" />
+                <input type="submit" name="submit" value="Add" id="submit" onclick="addnews()" />
+            </div>
+            <div>
+                <label for="search">
+                    Search :
+                    <input type="search" name="search" id="search" placeholder="Add Your Text Here" oninput="filterNews()" />
+                </label>
+            </div>
+            <div id="showNews">
+                <table>
+                    <tr>
+                        <th>N-Type</th>
+                        <th>The News</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            function searchValue(value, array) {
+                var smallValue = value.toLowerCase();
+                var smallArray = array.map((element) => {
+                    return element.toLowerCase();
+                });
+
+                if (smallArray.indexOf(smallValue) === -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            // Add New Row
+            var newsArray = [];
+            var typesArray = [];
+            function addnews() {
+                var newRow = document.createElement("tr");
+
+                var selectedRadio = document.querySelector("input[name='news']:checked");
+                if (!selectedRadio) {
+                    alert("Please select a news type.");
+                    return;
+                }
+                var newsText = document.querySelector("#newsTxt");
+                if (newsText.value.trim() === "") {
+                    alert("Please enter the news text.");
+                    return;
+                }
+
+                // Type
+                var newsType = selectedRadio.nextElementSibling.textContent;
+                var typeCell = document.createElement("td");
+                typeCell.textContent = newsType;
+                typesArray.push(newsType);
+
+                // News
+                var textCell = document.createElement("td");
+                textCell.textContent = newsText.value;
+
+                if (searchValue(newsText.value, newsArray) === true) {
+                    newsArray.push(newsText.value);
+                    console.log(newsArray);
+
+                    newRow.appendChild(typeCell);
+                    newRow.appendChild(textCell);
+
+                    //Add Color By Type
+                    switch (newsType.toLowerCase()) {
+                        case "sport":
+                            newRow.style.backgroundColor = "red";
+                            break;
+                        case "social":
+                            newRow.style.backgroundColor = "green";
+                            break;
+                        case "politic":
+                            newRow.style.backgroundColor = "blue";
+                            break;
+                    }
+
+                    document.querySelector("#showNews table").appendChild(newRow);
+                    newsText.value = "";
+                } else {
+                    alert("This News Has Already Added");
+                    // Clear Input
+                    newsText.value = "";
+                }
+            }
+
+            // Search For News
+            function filterNews() {
+                var searchValue = document.getElementById("search").value.toLowerCase();
+                var rows = document.querySelectorAll("#showNews tr:not(:first-child)");
+
+                rows.forEach(function (row) {
+                    var cells = row.querySelectorAll("td");
+                    var typeText = cells[0].textContent.toLowerCase();
+                    var newsText = cells[1].textContent.toLowerCase();
+
+                    if (typeText.includes(searchValue) || newsText.includes(searchValue)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

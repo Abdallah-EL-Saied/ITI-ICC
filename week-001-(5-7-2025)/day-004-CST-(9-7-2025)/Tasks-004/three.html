@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Task 3</title>
+        <script>
+            // #region Write Logic
+            var imgPromp;
+            var colorPromp;
+
+            while (true) {
+                imgPromp = prompt(`Add The Number of Your Image`);
+                if (isNaN(Number(imgPromp)) || imgPromp === "") {
+                    continue;
+                } else {
+                    if (+imgPromp > 10) {
+                        continue;
+                    } else if (+imgPromp == 0) {
+                        document.write("<h1>You Added 0 Or You Are Canceled</h1>");
+                        break;
+                    } else {
+                        colorPromp = prompt(`Add The Name or Hex of Your color`);
+                        // #region Create Elements
+                        document.writeln(`<p>This is Your Image</p>`);
+                        document.writeln(`<div><img src="photos/photo (` + imgPromp + `).png"></div>`);
+                        // #endregion Create Elements
+
+                        // #region styling
+                        document.querySelector("p").style.color = `${colorPromp}`;
+                        document.querySelector("p").style.fontSize = "30px";
+                        document.querySelector("div").style.border = `10px solid ${colorPromp}`;
+                        document.querySelector("div").style.width = "300px";
+                        document.querySelector("div").style.textAlign = "center";
+                        document.querySelector("img").style.width = "90%";
+                        // #endregion styling
+                        break;
+                    }
+                }
+            }
+            // #endregion Write Logic
+        </script>
+    </head>
+    <body></body>
+</html>

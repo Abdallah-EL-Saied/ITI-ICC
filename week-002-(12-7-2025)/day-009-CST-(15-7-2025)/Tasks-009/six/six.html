@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>Task 6</title>
+    <style>
+        label {
+            display: block;
+            margin: 20px;
+        }
+
+        div,
+        input[type="submit"] {
+            margin: 20px;
+        }
+
+        div label {
+            display: inline-block;
+        }
+
+        img {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="get" action="testPage.html">
+        <label>
+            Enter Your Name
+            <input type="text" name="name" id="name" />
+        </label>
+
+        <label>
+            Enter Your Age
+            <input type="number" name="age" id="age" />
+        </label>
+
+        <div>
+            <p>Select Yor Gendar</p>
+            <input id="male" type="radio" name="gender" value="male" />
+            <label for="male"><img src="../UP/male.jpg" alt="" /></label>
+            <input id="female" type="radio" name="gender" value="female" />
+            <label for="female"><img src="../UP/female.jpg" alt="" /></label>
+        </div>
+
+        <label>
+            Select Your Favorit Color:
+            <select name="favColor" id="favColor">
+                <option value="red">red</option>
+                <option value="green">green</option>
+                <option value="blue">blue</option>
+                <option value="yellow">yellow</option>
+            </select>
+        </label>
+
+        <input type="submit" name="submit" id="submit" />
+    </form>
+</body>
+
+</html>

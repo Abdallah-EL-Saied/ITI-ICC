@@ -1,0 +1,148 @@
+<html lang="en">
+    <head>
+        <title>task 3</title>
+        <style>
+            #change {
+                width: 800px;
+                min-height: 50px;
+                margin: 50px auto;
+                border: 1px solid black;
+                padding: 10px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            label {
+                display: inline-block;
+            }
+            input {
+                display: inline-block;
+            }
+            table {
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="change">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptas voluptates quod quam deserunt ipsam voluptate impedit magni natus dignissimos hic nemo, incidunt vel aut
+            exercitationem voluptatibus qui officiis modi?
+        </div>
+        <table border="1">
+            <tr>
+                <td>
+                    <p>Font-Family</p>
+                    <input type="radio" name="fontFamily" value="Arial" property="fontFamily" onclick="changePropertiesFunction(this)" />
+                    <label>Arial</label>
+                    <br />
+                    <input type="radio" name="fontFamily" value="Times New Roman" property="fontFamily" onclick="changePropertiesFunction(this)" />
+                    <label>Times</label>
+                    <br />
+                    <input type="radio" name="fontFamily" value="Courier" property="fontFamily" onclick="changePropertiesFunction(this)" />
+                    <label>Courier</label>
+                    <br />
+                </td>
+                <td>
+                    <p>Text-Align</p>
+                    <input type="radio" name="textAlign" value="center" property="textAlign" onclick="changePropertiesFunction(this)" />
+                    <label>Center</label>
+                    <br />
+                    <input type="radio" name="textAlign" value="left" property="textAlign" onclick="changePropertiesFunction(this)" />
+                    <label>Left</label>
+                    <br />
+                    <input type="radio" name="textAlign" value="right" property="textAlign" onclick="changePropertiesFunction(this)" />
+                    <label>Right</label>
+                    <br />
+                </td>
+                <td>
+                    <p>Line-Hight</p>
+                    <input type="radio" name="lineHeight" value="1" property="lineHeight" onclick="changePropertiesFunction(this)" />
+                    <label>1</label>
+                    <br />
+                    <input type="radio" name="lineHeight" value="1.5" property="lineHeight" onclick="changePropertiesFunction(this)" />
+                    <label>1.5</label>
+                    <br />
+                    <input type="radio" name="lineHeight" value="2" property="lineHeight" onclick="changePropertiesFunction(this)" />
+                    <label>2</label>
+                    <br />
+                </td>
+                <td>
+                    <p>Letter-Spacing</p>
+                    <input type="radio" name="letterSpacing" value="2px" property="letterSpacing" onclick="changePropertiesFunction(this)" />
+                    <label>2px</label>
+                    <br />
+                    <input type="radio" name="letterSpacing" value="5px" property="letterSpacing" onclick="changePropertiesFunction(this)" />
+                    <label>5px</label>
+                    <br />
+                    <input type="radio" name="letterSpacing" value="7px" property="letterSpacing" onclick="changePropertiesFunction(this)" />
+                    <label>7px</label>
+                    <br />
+                </td>
+                <td>
+                    <p>Text-Transform</p>
+                    <input type="radio" name="textTransform" value="capitalize" property="textTransform" onclick="changePropertiesFunction(this)" />
+                    <label>capitalize</label>
+                    <br />
+                    <input type="radio" name="textTransform" value="uppercase" property="textTransform" onclick="changePropertiesFunction(this)" />
+                    <label>uppercase</label>
+                    <br />
+                    <input type="radio" name="textTransform" value="lowercase" property="textTransform" onclick="changePropertiesFunction(this)" />
+                    <label for="lowercase">lowercase</label>
+                    <br />
+                </td>
+                <td>
+                    <p>Text-Color</p>
+                    <input type="radio" name="color" value="red" property="color" onclick="changePropertiesFunction(this)" />
+                    <label>red</label>
+                    <br />
+                    <input type="radio" name="color" value="green" property="color" onclick="changePropertiesFunction(this)" />
+                    <label>green</label>
+                    <br />
+                    <input type="radio" name="color" value="blue" property="color" onclick="changePropertiesFunction(this)" />
+                    <label for="lowercase">blue</label>
+                    <br />
+                </td>
+                <td>
+                    <p>Border-Width</p>
+                    <input type="radio" name="borderWidth" value="2px" property="borderWidth" onclick="changePropertiesFunction(this)" />
+                    <label>2px</label>
+                    <br />
+                    <input type="radio" name="borderWidth" value="5px" property="borderWidth" onclick="changePropertiesFunction(this)" />
+                    <label>5px</label>
+                    <br />
+                    <input type="radio" name="borderWidth" value="7px" property="borderWidth" onclick="changePropertiesFunction(this)" />
+                    <label>7px</label>
+                    <br />
+                </td>
+                <td>
+                    <p>Border-type</p>
+                    <input type="radio" name="borderType" value="solid" property="borderStyle" onclick="changePropertiesFunction(this)" />
+                    <label>solid</label>
+                    <br />
+                    <input type="radio" name="borderType" value="dotted" property="borderStyle" onclick="changePropertiesFunction(this)" />
+                    <label>dotted</label>
+                    <br />
+                    <input type="radio" name="borderType" value="dashed" property="borderStyle" onclick="changePropertiesFunction(this)" />
+                    <label>dashed</label>
+                    <br />
+                </td>
+                <td>
+                    <p>Border-color</p>
+                    <input type="radio" name="borderColor" value="red" property="borderColor" onclick="changePropertiesFunction(this)" />
+                    <label>red</label>
+                    <br />
+                    <input type="radio" name="borderColor" value="green" property="borderColor" onclick="changePropertiesFunction(this)" />
+                    <label>green</label>
+                    <br />
+                    <input type="radio" name="borderColor" value="blue" property="borderColor" onclick="changePropertiesFunction(this)" />
+                    <label>blue</label>
+                    <br />
+                </td>
+            </tr>
+        </table>
+
+        <script>
+            function changePropertiesFunction(element) {
+                document.getElementById("change").style[element.getAttribute("property")] = element.value;
+            }
+        </script>
+    </body>
+</html>

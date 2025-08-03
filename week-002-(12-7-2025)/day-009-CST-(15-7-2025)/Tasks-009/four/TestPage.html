@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Task 3</title>
+    <style>
+        #writeTXT {
+            font-size: 20px;
+            padding: 20px;
+            font-family: "Courier New", monospace;
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+    </style>
+    <script>
+        var message = "";
+
+        window.onload = function () {
+            if (window.opener && window.opener.message) {
+                message = window.opener.message;
+
+                var i = 0;
+                var speed = 50;
+                var target = document.getElementById("writeTXT");
+
+                function typeWriter() {
+                    if (i < message.length) {
+                        target.textContent += message.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    } else {
+                        setTimeout(function () {
+                            window.close();
+                        }, 500);
+                    }
+                }
+                typeWriter();
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div id="writeTXT"></div>
+</body>
+
+</html>

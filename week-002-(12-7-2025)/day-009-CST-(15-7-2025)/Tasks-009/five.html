@@ -1,0 +1,166 @@
+<html>
+    <head>
+        <title>Task 5</title>
+        <style>
+            #container {
+                width: 80%;
+                margin: auto;
+                text-align: center;
+            }
+            #star {
+                color: yellow;
+                font-size: 40px;
+            }
+            #image {
+                width: fit-content;
+                border: 5px solid orange;
+                margin: auto;
+            }
+            input {
+                width: 80px;
+                height: 30px;
+                border: 0;
+                outline: 0;
+                color: white;
+            }
+            input[value="Input"] {
+                cursor: pointer;
+                background-color: green;
+            }
+            input[value="Output"] {
+                background-color: blue;
+                opacity: 50%;
+            }
+            table {
+                height: 200px;
+                margin: auto;
+            }
+            .showArray {
+                border: 2px solid;
+                padding: 5px;
+                min-width: 100px;
+                height: 30px;
+            }
+            table p {
+                margin: 0 0 5px 0;
+            }
+            table p:first-child {
+                text-align: center;
+            }
+            table p:last-child {
+                text-align: center;
+                min-width: 120px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Bottel Game</h1>
+            <div id="star">★★★</div>
+            <div id="image">
+                <img src="UP/bottelGame.jpeg" alt="" />
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, perferendis quo? Tenetur ratione nesciunt earum?</p>
+            <table>
+                <tr>
+                    <td>
+                        <input id="Input" type="button" value="Input" onclick="mainFunction()" />
+                    </td>
+                    <td>
+                        <p>Array</p>
+                        <p id="inputBox" class="showArray"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Output" type="button" value="Output" onclick="getRandomNames(mainArray)" disabled />
+                    </td>
+                    <td>
+                        <p>Array</p>
+                        <p id="outputBox" class="showArray"></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+            function getValidNumber(inputStr) {
+                if (inputStr === null) {
+                    return null;
+                } else if (inputStr === "") {
+                    return "You Can't Enter Spaces Between The Numbers";
+                } else if (inputStr.includes(" ")) {
+                    return "You Can't Leave The Field Empty";
+                } else if (isNaN(Number(inputStr))) {
+                    return "Please Enter Valid Number";
+                } else {
+                    return true;
+                }
+            }
+
+            function getInputError(inputStr) {
+                if (inputStr === "") {
+                    return "You Can't Leave The Field Empty";
+                }
+                if (inputStr.includes(" ")) {
+                    return "You Can't Enter Spaces Between The Letter";
+                }
+                if (!/^[a-zA-Z]+$/.test(inputStr)) {
+                    return "Please Enter Your Name Without Spaces Or Special Characters";
+                }
+                return null;
+            }
+
+            function getValidName(promptMessage) {
+                let userInput;
+                do {
+                    userInput = prompt(promptMessage);
+                    if (userInput === null) return null;
+                    userInput = userInput.trim();
+                    var errorMsg = getInputError(userInput);
+                    if (errorMsg !== null) {
+                        alert(errorMsg);
+                    } else {
+                        break;
+                    }
+                } while (true);
+                return userInput;
+            }
+
+            var mainArray = [];
+            function mainFunction() {
+                while (true) {
+                    var arrayLength = prompt("Enter the number of members");
+                    if (getValidNumber(arrayLength) === true) {
+                        document.querySelector('input[value="Input"]').setAttribute("disabled", "");
+                        document.getElementById("Input").style.removeProperty("cursor");
+                        document.getElementById("Input").style.setProperty("opacity", "50%");
+                        for (var i = 0; i < arrayLength; i++) {
+                            var names = getValidName("Enter Name " + (i + 1));
+                            mainArray.push(names);
+                        }
+                        document.getElementById("inputBox").innerText = "[ " + mainArray.join(" , ") + " ]";
+                    } else if (getValidNumber(arrayLength) === null) {
+                        break;
+                    } else {
+                        alert(getValidNumber(arrayLength));
+                        continue;
+                    }
+                    break;
+                }
+                document.querySelector('input[value="Output"]').removeAttribute("disabled");
+                document.getElementById("Output").style.setProperty("cursor", "pointer");
+                document.getElementById("Output").style.setProperty("opacity", "100%");
+            }
+
+            function getRandomNames(array) {
+                var randomNumOne = Math.floor(Math.random() * array.length);
+                var randomNumTwo = Math.floor(Math.random() * array.length);
+                var randomNames = [];
+                randomNames.push(array[randomNumOne]);
+                randomNames.push(array[randomNumTwo]);
+                document.getElementById("outputBox").innerText = "[ " + randomNames.join(" , ") + " ]";
+            }
+        </script>
+    </body>
+</html>

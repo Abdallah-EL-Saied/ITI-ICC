@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 6</title>
+        <style></style>
+        <script>
+            function getInputError(inputStr) {
+                if (inputStr === "") {
+                    return "You Can't Leave The Field Empty";
+                }
+                if (inputStr.includes(" ")) {
+                    return "You can't enter spaces in the name";
+                }
+                if (!/^[a-zA-Z]+$/.test(inputStr)) {
+                    return "Please Enter Your Name Without Spaces Or Special Characters";
+                }
+                return null;
+            }
+
+            function convertToPascalCase(cleanArray) {
+                return cleanArray
+                    .map(function (word) {
+                        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                    })
+                    .join(" ");
+            }
+
+            function getValidName(promptMessage) {
+                let userInput;
+                do {
+                    userInput = prompt(promptMessage);
+                    if (userInput === null) return null;
+                    userInput = userInput.trim();
+                    var errorMsg = getInputError(userInput);
+                    if (errorMsg !== null) {
+                        alert(errorMsg);
+                    } else {
+                        break;
+                    }
+                } while (true);
+                return userInput;
+            }
+
+            var firstName = getValidName("Please Enter Your First Name");
+            if (firstName === null) {
+                console.log("User cancelled input.");
+            } else {
+                var lastName = getValidName("Please Enter Your Last Name");
+                if (lastName === null) {
+                    console.log("User cancelled input.");
+                } else {
+                    var fullNamePascalCase = convertToPascalCase([firstName, lastName]);
+                    alert("Your Name Converted to PascalCase is: " + fullNamePascalCase);
+                    console.log(fullNamePascalCase);
+                }
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

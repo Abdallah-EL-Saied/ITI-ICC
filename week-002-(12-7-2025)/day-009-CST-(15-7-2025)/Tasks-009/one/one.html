@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Task 1</title>
+        <style></style>
+        <script>
+            function openTestPage() {
+                var openedWindow = open("./TestPage.html", "", "width=800, height=600");
+                openedWindow.onload = function () {
+                    window.setTimeout(() => {
+                        openedWindow.scrollTo({
+                            top: openedWindow.document.body.scrollHeight,
+                            behavior: "smooth",
+                        });
+                    }, 1000);
+
+                    window.setTimeout(() => {
+                        openedWindow.close();
+                    }, 2500);
+                };
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="Open Pup Up Window" onclick="openTestPage()" />
+    </body>
+</html>
