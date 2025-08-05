@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Tasks</title>
+
+    <style>
+        .container {
+            width: 70%;
+            margin: 150px auto;
+            padding: 20px;
+            background-color: #eee;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        #btns-box {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #btns-box button {
+            width: 100px;
+            height: 30px;
+            border: 0;
+            outline: o;
+            background-color: #aaa;
+            border-radius: 15px;
+        }
+
+        #effects-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .tasks {
+            width: 100%;
+            height: 50px;
+            background-color: #009688;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="btns-box">
+            <button id="do">Do</button>
+            <button id="undo">Undo</button>
+            <button id="toggle">Toggle</button>
+        </div>
+        <div id="effects-box">
+            <div id="showHide" class="tasks">Task One</div>
+            <div id="fade" class="tasks">Task Two</div>
+            <div id="slide" class="tasks">Task Three</div>
+            <div id="animation" class="tasks">Task Four</div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
