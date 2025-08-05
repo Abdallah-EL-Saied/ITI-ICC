@@ -1,2 +1,2 @@
 # ITI-ICC
-ITI - Files &amp; Tasks
+ITI - Tasks Files
