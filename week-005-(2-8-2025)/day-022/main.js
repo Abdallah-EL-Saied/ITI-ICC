@@ -45,7 +45,7 @@ $(document).ready(function () {
         $("#slide").slideToggle(500);
 
         let box = $("#animation");
-        if (box.width() === 300) {
+        if (box.width() <= 301 && box.width() >= 299) {
             box.animate({
                 width: "100%",
                 height: "50px",
