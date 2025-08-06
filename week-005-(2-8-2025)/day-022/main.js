@@ -43,6 +43,21 @@ $(document).ready(function () {
         $("#showHide").toggle(500);
         $("#fade").fadeToggle(500);
         $("#slide").slideToggle(500);
+
+        let box = $("#animation");
+        if (box.width() === 300) {
+            box.animate({
+                width: "100%",
+                height: "50px",
+                opacity: 1
+            }, 500);
+        } else {
+            box.animate({
+                width: "300px",
+                height: "70px",
+                opacity: 0.5
+            }, 500);
+        }
     });
 
 
@@ -69,6 +84,17 @@ $(document).ready(function () {
     //================ Animation Effect ============================
 
     $("#animation").mouseenter(function () {
+        $(this).animate({
+            width: "300px",
+            height: "70px",
+            opacity: 0.5
+        }, 500).animate({
+            width: "100%",
+            height: "50px",
+            opacity: 1
+        }, 500);
+    });
+    $("#animation").mouseleave(function () {
         $(this).animate({
             width: "300px",
             height: "70px",
