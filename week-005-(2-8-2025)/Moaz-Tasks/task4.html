@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Example</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+  .highlight {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+  }
+</style>
+
+</head>
+<body>
+<div id="box" class="bg-light p-3">Click the buttons below</div>
+<button id="addClassBtn">Add Class</button>
+<button id="toggleClassBtn">Toggle Class</button>
+
+   <script>
+
+  
+  $('#addClassBtn').click(function () {
+    $('#box').addClass('highlight');
+  });
+
+
+  $('#toggleClassBtn').click(function () {
+    $('#box').toggleClass('highlight');
+  });
+
+  </script>
+
+</body>
+</html>

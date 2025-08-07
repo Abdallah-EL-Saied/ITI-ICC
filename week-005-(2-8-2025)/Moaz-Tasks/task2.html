@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Example</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div id="box">
+  <p>Old Content</p>
+</div>
+<button id="append">append</button>
+<button id="before">before</button>
+ <button id="reset">reset</button>
+
+<script>
+    $("#append").click(function(){
+        $('#box').append('<p>New content added with append</p>');
+    })
+    $("#before").click(function(){
+        $('#box').before('<p>New content added with before</p>');
+    })
+      $('#reset').click(function () {
+      $('#box').html('<p>Old Content</p>'); 
+    });
+    
+</script>
+
+
+</body>
+</html>

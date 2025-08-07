@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Example</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div id="container">
+  <p id="text">This is a paragraph to be removed.</p>
+  <button id="removeBtn">Remove</button>
+</div>
+
+ <script>
+  $('#removeBtn').click(function () {
+    $('#text').remove();
+  });
+</script>
+
+
+</body>
+</html>

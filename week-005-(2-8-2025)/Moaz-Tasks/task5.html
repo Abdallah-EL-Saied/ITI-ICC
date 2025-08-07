@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Example</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="grandparent">
+  <div class="parent">
+    <div class="child" id="myChild">Click Me</div>
+  </div>
+</div>
+<br><br>
+<button id="Select-All-Ancestors">Select-All-Ancestors</button>
+<button id="Select-specific-Ancestors">Select-specific-Ancestors</button>
+
+  <script>
+     $('#Select-All-Ancestors').click(function () {
+   $('#myChild').parents().css('border', '2px solid red');
+     })
+     $('#Select-specific-Ancestors').click(function () {
+  $('#myChild').parents('.parent').css('border', '5px solid blue');
+     })
+  </script>
+
+</body>
+</html>

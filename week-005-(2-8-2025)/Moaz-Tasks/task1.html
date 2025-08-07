@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Example</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+  <div id="demo">Hello World</div>
+  <button id="btn">Change Text</button>
+  <button id="btn2">set head tag</button>
+  <button id="reset">reset</button>
+
+  <script>
+    $('#btn').click(function () {
+      $('#demo').text('Text is changed'); 
+    });
+    $('#btn2').click(function () {
+      $('#demo').html('<h1>Hello World</h1>'); 
+    });
+    $('#reset').click(function () {
+      $('#demo').text('Hello World'); 
+    });
+  </script>
+
+</body>
+</html>

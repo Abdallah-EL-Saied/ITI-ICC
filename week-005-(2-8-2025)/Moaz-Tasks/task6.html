@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery Example</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child1">
+        <p class="target">Hello</p>
+      </div>
+      <div class="child2">World</div>
+    </div>
+    <br /><br />
+    <button id="children">children</button>
+    <button id="find">find</button>
+
+    <script>
+      // Direct children of .parent
+      $("#children").click(function () {
+        $(".parent").children().css("background-color", "lightgray");
+      });
+      // All descendants with class "target"
+      $("#find").click(function () {
+        $(".parent").find(".target").text("Found!");
+      });
+    </script>
+  </body>
+</html>
