@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery Lab Tasks Final</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .main-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .task-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .task-section h3 {
+            margin-top: 0;
+            color: #555;
+            border-left: 4px solid #007bff;
+            padding-left: 10px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .add-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .action-btn {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .action-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .reset-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background-color: #c82333;
+        }
+
+        .demo-box {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .demo-box p {
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        li.done {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #dc3545;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            color: #c82333;
+        }
+
+        .highlight-parent {
+            border: 2px solid #ffc107 !important;
+            background-color: #fff3cd !important;
+        }
+
+        .highlight-descendant {
+            background-color: #28a745 !important;
+            color: white !important;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-container">
+        <h1>jQuery Lab Tasks Demo</h1>
+
+        <div class="task-section">
+            <h3>Add & Remove Elements</h3>
+            <div class="controls">
+                <input type="text" id="task-input" placeholder="Enter new task...">
+                <button id="append-btn" class="add-btn">Append Task</button>
+                <button id="before-btn" class="add-btn">Add Before List</button>
+            </div>
+
+            <ul id="task-list">
+            </ul>
+        </div>
+
+        <div class="task-section">
+            <h3>Get & Set Content</h3>
+            <div class="demo-box">
+                <p id="content-box">This is a paragraph with <strong>bold text</strong> inside.</p>
+            </div>
+            <div class="controls">
+                <button id="show-text-btn" class="action-btn">Show Text</button>
+                <button id="show-html-btn" class="action-btn">Show HTML</button>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h3>Select All Ancestors (Parents)</h3>
+            <div class="demo-box" id="grandparent-box">
+                <p>Grandparent</p>
+                <div class="demo-box" id="parent-box">
+                    <p>Parent</p>
+                    <div class="demo-box">
+                        <p>Child with <span id="nested-span">A nested span (Target)</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="highlight-parents-btn" class="action-btn">Highlight Parents</button>
+                <button id="unselect-parents-btn" class="reset-btn">Unselect Parents</button>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h3>Traversing Down (Find)</h3>
+            <div class="demo-box" id="find-container">
+                <p>Container</p>
+                <div>
+                    <span>Span 1</span>
+                    <ul>
+                        <li>Item A</li>
+                        <li>Item B</li>
+                    </ul>
+                </div>
+                <p>Paragraph 2</p>
+            </div>
+            <div class="controls">
+                <button id="highlight-descendants-btn" class="action-btn">Highlight Descendants</button>
+                <button id="unselect-descendants-btn" class="reset-btn">Unselect Descendants</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
